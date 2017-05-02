@@ -1,4 +1,4 @@
 
 # EasyTranslation
-<img src="Logo.svg">
+<img src="Logo.png">
 Software Engineering project
