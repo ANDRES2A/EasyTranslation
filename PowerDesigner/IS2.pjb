@@ -510,7 +510,7 @@ LABL 0 Arial,8,N</a:FontList>
 <a:GradientFillMode>65</a:GradientFillMode>
 <a:CustomPictureType>4</a:CustomPictureType>
 <a:CustomTextMode>1</a:CustomTextMode>
-<a:CustomPictureID>1116A3B5-0BCE-4207-9C7A-DC82862472C0</a:CustomPictureID>
+<a:CustomPictureID>2DE24ED3-D7EC-475D-A6B3-FF806F217283</a:CustomPictureID>
 <a:GradientEndColor>16777215</a:GradientEndColor>
 <a:KeepAspect>1</a:KeepAspect>
 <c:Object>
@@ -559,7 +559,7 @@ LABL 0 Arial,8,N</a:FontList>
 <a:Code>CLASES_DEV_TRADUCCIONES</a:Code>
 <a:CreationDate>1493350158</a:CreationDate>
 <a:Creator>SebastiaN</a:Creator>
-<a:ModificationDate>1493351759</a:ModificationDate>
+<a:ModificationDate>1493350332</a:ModificationDate>
 <a:Modifier>SebastiaN</a:Modifier>
 <a:Location>file:///%[PRJ_ROOT_DIR]%/ConceptualDataModel.cdm</a:Location>
 <a:Extension>cdm</a:Extension>
@@ -572,7 +572,7 @@ LABL 0 Arial,8,N</a:FontList>
 <a:Code>ClasesBasicas_Dev_Traducciones</a:Code>
 <a:CreationDate>1494199917</a:CreationDate>
 <a:Creator>SebastiaN</a:Creator>
-<a:ModificationDate>1494200078</a:ModificationDate>
+<a:ModificationDate>1494200040</a:ModificationDate>
 <a:Modifier>SebastiaN</a:Modifier>
 <a:Location>file:///%[PRJ_ROOT_DIR]%/ClasesBasicas_Dev_Traducciones.oom</a:Location>
 <a:Extension>oom</a:Extension>
