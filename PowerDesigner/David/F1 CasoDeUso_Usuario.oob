@@ -1365,8 +1365,8 @@ Shadow=0</a:DisplayPreferences>
 <o:GeneralizationSymbol Id="o10">
 <a:CreationDate>1494784614</a:CreationDate>
 <a:ModificationDate>1494784865</a:ModificationDate>
-<a:Rect>((4753,-2424), (13225,18300))</a:Rect>
-<a:ListOfPoints>((12825,-2024),(12825,17400),(5153,17400))</a:ListOfPoints>
+<a:Rect>((4753,-2425), (13225,18300))</a:Rect>
+<a:ListOfPoints>((12825,-2025),(12825,17400),(5153,17400))</a:ListOfPoints>
 <a:CornerStyle>1</a:CornerStyle>
 <a:ArrowStyle>7</a:ArrowStyle>
 <a:LineColor>16744576</a:LineColor>
@@ -1386,8 +1386,8 @@ Shadow=0</a:DisplayPreferences>
 <o:GeneralizationSymbol Id="o13">
 <a:CreationDate>1494784617</a:CreationDate>
 <a:ModificationDate>1494784868</a:ModificationDate>
-<a:Rect>((-15849,-2798), (-1027,18150))</a:Rect>
-<a:ListOfPoints>((-15449,-2398),(-15449,17250),(-1427,17250))</a:ListOfPoints>
+<a:Rect>((-15849,-2799), (-1027,18150))</a:Rect>
+<a:ListOfPoints>((-15449,-2399),(-15449,17250),(-1427,17250))</a:ListOfPoints>
 <a:CornerStyle>1</a:CornerStyle>
 <a:ArrowStyle>7</a:ArrowStyle>
 <a:LineColor>16744576</a:LineColor>
@@ -1407,8 +1407,8 @@ Shadow=0</a:DisplayPreferences>
 <o:GeneralizationSymbol Id="o16">
 <a:CreationDate>1494784834</a:CreationDate>
 <a:ModificationDate>1494899225</a:ModificationDate>
-<a:Rect>((-2315,-2799), (-515,15700))</a:Rect>
-<a:ListOfPoints>((-1415,-2399),(-1415,15300))</a:ListOfPoints>
+<a:Rect>((-2326,-2800), (-526,15700))</a:Rect>
+<a:ListOfPoints>((-1426,-2400),(-1426,15300))</a:ListOfPoints>
 <a:CornerStyle>1</a:CornerStyle>
 <a:ArrowStyle>7</a:ArrowStyle>
 <a:LineColor>16744576</a:LineColor>
@@ -1485,7 +1485,7 @@ LABL 0 Arial,8,N</a:FontList>
 <o:UseCaseSymbol Id="o14">
 <a:CreationDate>1494784420</a:CreationDate>
 <a:ModificationDate>1494784868</a:ModificationDate>
-<a:Rect>((-19937,-5097), (-10962,302))</a:Rect>
+<a:Rect>((-19976,-5098), (-10923,301))</a:Rect>
 <a:LineColor>16744448</a:LineColor>
 <a:LineWidth>1</a:LineWidth>
 <a:FillColor>16777152</a:FillColor>
@@ -1503,7 +1503,7 @@ LABL 0 Arial,8,N</a:FontList>
 <o:UseCaseSymbol Id="o17">
 <a:CreationDate>1494784421</a:CreationDate>
 <a:ModificationDate>1494784867</a:ModificationDate>
-<a:Rect>((-5094,-5098), (4195,301))</a:Rect>
+<a:Rect>((-5198,-5099), (4299,300))</a:Rect>
 <a:LineColor>16744448</a:LineColor>
 <a:LineWidth>1</a:LineWidth>
 <a:FillColor>16777152</a:FillColor>
@@ -1521,7 +1521,7 @@ LABL 0 Arial,8,N</a:FontList>
 <o:UseCaseSymbol Id="o11">
 <a:CreationDate>1494784421</a:CreationDate>
 <a:ModificationDate>1494784865</a:ModificationDate>
-<a:Rect>((8496,-4723), (17155,676))</a:Rect>
+<a:Rect>((8409,-4724), (17242,675))</a:Rect>
 <a:LineColor>16744448</a:LineColor>
 <a:LineWidth>1</a:LineWidth>
 <a:FillColor>16777152</a:FillColor>
