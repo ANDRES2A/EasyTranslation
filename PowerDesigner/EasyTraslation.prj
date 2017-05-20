@@ -495,7 +495,7 @@ Shadow=0</a:DisplayPreferences>
 <c:Symbols>
 <o:DependencyLinkSymbol Id="o4">
 <a:ModificationDate>1495217930</a:ModificationDate>
-<a:Rect>((-2232,-15648), (2230,-8747))</a:Rect>
+<a:Rect>((-2041,-15648), (2038,-8747))</a:Rect>
 <a:ListOfPoints>((-1,-9147),(-1,-15248))</a:ListOfPoints>
 <a:CornerStyle>1</a:CornerStyle>
 <a:ArrowStyle>1</a:ArrowStyle>
@@ -514,7 +514,7 @@ Shadow=0</a:DisplayPreferences>
 </o:DependencyLinkSymbol>
 <o:DependencyLinkSymbol Id="o8">
 <a:ModificationDate>1495219346</a:ModificationDate>
-<a:Rect>((-2232,-16847), (2230,952))</a:Rect>
+<a:Rect>((-2041,-16847), (2038,952))</a:Rect>
 <a:ListOfPoints>((-1,-16447),(-1,552))</a:ListOfPoints>
 <a:CornerStyle>1</a:CornerStyle>
 <a:ArrowStyle>1</a:ArrowStyle>
@@ -546,7 +546,7 @@ LABL 0 Arial,8,N</a:FontList>
 <a:GradientFillMode>65</a:GradientFillMode>
 <a:CustomPictureType>4</a:CustomPictureType>
 <a:CustomTextMode>1</a:CustomTextMode>
-<a:CustomPictureID>C63414AA-49D7-4865-8B4F-6B93F4C6A434</a:CustomPictureID>
+<a:CustomPictureID>0CC4FB10-D6E5-4D52-A494-FE679E6C71CF</a:CustomPictureID>
 <a:GradientEndColor>16777215</a:GradientEndColor>
 <a:KeepAspect>1</a:KeepAspect>
 <c:Object>
@@ -568,7 +568,7 @@ LABL 0 Arial,8,N</a:FontList>
 <a:GradientFillMode>65</a:GradientFillMode>
 <a:CustomPictureType>4</a:CustomPictureType>
 <a:CustomTextMode>1</a:CustomTextMode>
-<a:CustomPictureID>C63414AA-49D7-4865-8B4F-6B93F4C6A434</a:CustomPictureID>
+<a:CustomPictureID>0CC4FB10-D6E5-4D52-A494-FE679E6C71CF</a:CustomPictureID>
 <a:GradientEndColor>16777215</a:GradientEndColor>
 <a:KeepAspect>1</a:KeepAspect>
 <c:Object>
@@ -590,7 +590,7 @@ LABL 0 Arial,8,N</a:FontList>
 <a:GradientFillMode>65</a:GradientFillMode>
 <a:CustomPictureType>4</a:CustomPictureType>
 <a:CustomTextMode>1</a:CustomTextMode>
-<a:CustomPictureID>C63414AA-49D7-4865-8B4F-6B93F4C6A434</a:CustomPictureID>
+<a:CustomPictureID>0CC4FB10-D6E5-4D52-A494-FE679E6C71CF</a:CustomPictureID>
 <a:GradientEndColor>16777215</a:GradientEndColor>
 <a:KeepAspect>1</a:KeepAspect>
 <c:Object>
@@ -617,7 +617,7 @@ LABL 0 Arial,8,N</a:FontList>
 <a:CreationDate>1495211447</a:CreationDate>
 <a:Creator>Sebastian</a:Creator>
 <a:ModificationDate>1495141692</a:ModificationDate>
-<a:Modifier>Sebastian</a:Modifier>
+<a:Modifier>a_asi</a:Modifier>
 <a:Location>file:///%[PRJ_ROOT_DIR]%/David/F1 CasoDeUso_Usuario.oom</a:Location>
 <a:Extension>oom</a:Extension>
 <a:ModelDocument.ModelID>50B87FBC-BA13-4C32-B7E9-37EC2C2765D7</a:ModelDocument.ModelID>
@@ -666,8 +666,8 @@ LABL 0 Arial,8,N</a:FontList>
 <a:Code>GeneralDetallado</a:Code>
 <a:CreationDate>1495211649</a:CreationDate>
 <a:Creator>Sebastian</a:Creator>
-<a:ModificationDate>1495211767</a:ModificationDate>
-<a:Modifier>Sebastian</a:Modifier>
+<a:ModificationDate>1495218058</a:ModificationDate>
+<a:Modifier>a_asi</a:Modifier>
 <a:Location>file:///%[PRJ_ROOT_DIR]%/ClasesGeneralDetallado.oom</a:Location>
 <a:Extension>oom</a:Extension>
 <a:ModelDocument.ModelID>EAA12111-E58D-4DA4-89A3-9465889E6A5C</a:ModelDocument.ModelID>
@@ -706,7 +706,7 @@ LABL 0 Arial,8,N</a:FontList>
 <a:CreationDate>1495213979</a:CreationDate>
 <a:Creator>Sebastian</a:Creator>
 <a:ModificationDate>1495213901</a:ModificationDate>
-<a:Modifier>Sebastian</a:Modifier>
+<a:Modifier>a_asi</a:Modifier>
 <a:Location>file:///%[PRJ_ROOT_DIR]%/Patricio/F2 Clases_Idioma.oom</a:Location>
 <a:Extension>oom</a:Extension>
 <a:ModelDocument.ModelID>E4C1482C-07A2-4B1B-BB3C-4C0D79688049</a:ModelDocument.ModelID>
@@ -719,7 +719,7 @@ LABL 0 Arial,8,N</a:FontList>
 <a:CreationDate>1495213471</a:CreationDate>
 <a:Creator>Sebastian</a:Creator>
 <a:ModificationDate>1495200347</a:ModificationDate>
-<a:Modifier>Sebastian</a:Modifier>
+<a:Modifier>a_asi</a:Modifier>
 <a:Location>file:///%[PRJ_ROOT_DIR]%/Andres/F6 Clases_Revisor.oom</a:Location>
 <a:Extension>oom</a:Extension>
 <a:ModelDocument.ModelID>08E04F5E-9590-4F1B-A4F7-C8B5F84E0187</a:ModelDocument.ModelID>
