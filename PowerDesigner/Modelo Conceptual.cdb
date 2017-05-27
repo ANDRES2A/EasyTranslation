@@ -3911,12 +3911,12 @@ ATT CODE</a:History>
 <a:Code>GENERALDETALLADO</a:Code>
 <a:CreationDate>1495318487</a:CreationDate>
 <a:Creator>Sebastian</a:Creator>
-<a:ModificationDate>1495899440</a:ModificationDate>
+<a:ModificationDate>1495899232</a:ModificationDate>
 <a:Modifier>Sebastian</a:Modifier>
 <a:TargetModelURL>file:///%[PRJ_ROOT_DIR]%/Modelo Logico.ldm</a:TargetModelURL>
 <a:TargetModelID>ECC492B0-387B-4FDB-A94C-ED1A81FF7E03</a:TargetModelID>
 <a:TargetModelClassID>5F45F978-C4F3-4E35-A3FC-AF3318663A0F</a:TargetModelClassID>
-<a:TargetModelLastModificationDate>1495899440</a:TargetModelLastModificationDate>
+<a:TargetModelLastModificationDate>1495899275</a:TargetModelLastModificationDate>
 <c:SessionShortcuts>
 <o:Shortcut Ref="o3"/>
 </c:SessionShortcuts>
