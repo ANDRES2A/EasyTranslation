@@ -1,6 +1,6 @@
 /*==============================================================*/
 /* DBMS name:      ORACLE Version 11g                           */
-/* Created on:     27/05/2017 12:03:08                          */
+/* Created on:     28/05/2017 11:48:47                          */
 /*==============================================================*/
 
 
@@ -129,8 +129,10 @@ create index POSEE_1_FK on "Comentario" (
 /*==============================================================*/
 create table "Fiabilidad" 
 (
+   "calificacion_fi"    INTEGER,
+   "id_fi"              INTEGER              not null,
    "correo_us"          CHAR(100),
-   "calificacion_fi"    INTEGER
+   constraint PK_FIABILIDAD primary key ("id_fi")
 );
 
 /*==============================================================*/
@@ -178,7 +180,9 @@ create table LOG
    "Rol_log"            CHAR(30),
    "sql_log"            VARCHAR2(250),
    "tabla_log"          VARCHAR2(250),
-   "fecha_log"          TIMESTAMP
+   "fecha_log"          TIMESTAMP,
+   "id_log"             INTEGER              not null,
+   constraint PK_LOG primary key ("id_log")
 );
 
 /*==============================================================*/
@@ -186,9 +190,11 @@ create table LOG
 /*==============================================================*/
 create table "Pago" 
 (
+   "valor_pa"           NUMBER(18,2),
+   "id_pa"              INTEGER              not null,
    "codigo_tr"          INTEGER,
    "codigo_in"          INTEGER,
-   "valor_pa"           NUMBER(18,2)
+   constraint PK_PAGO primary key ("id_pa")
 );
 
 /*==============================================================*/
@@ -249,7 +255,8 @@ create index SABE_FK on "Revisor" (
 create table "Subasta" 
 (
    "codigo_pe"          INTEGER,
-   "Valor"              FLOAT
+   "Valor"              FLOAT,
+   "id_su"              INTEGER
 );
 
 /*==============================================================*/
