@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="PeticionCreateDlg" widgetVar="PeticionCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{myBundle.CreatePeticionTitle}" closeOnEscape="true">
+
+            <h:form id="PeticionCreateForm">
+
+                <h:panelGroup id="display" rendered="#{peticionController.selected != null}">
+                    <p:panelGrid columns="2" columnClasses="column">
+
+                        <p:outputLabel value="#{myBundle.CreatePeticionLabel_codigoPe}" for="codigoPe" />
+                        <p:inputText id="codigoPe" value="#{peticionController.selected.codigoPe}" title="#{myBundle.CreatePeticionTitle_codigoPe}" required="true" requiredMessage="#{myBundle.CreatePeticionRequiredMessage_codigoPe}"/>
+
+                        <p:outputLabel value="#{myBundle.CreatePeticionLabel_descripcionPe}" for="descripcionPe" />
+                        <p:inputText id="descripcionPe" value="#{peticionController.selected.descripcionPe}" title="#{myBundle.CreatePeticionTitle_descripcionPe}" size="200" maxlength="200"/>
+
+                        <p:outputLabel value="#{myBundle.CreatePeticionLabel_extencionPe}" for="extencionPe" />
+                        <p:inputText id="extencionPe" value="#{peticionController.selected.extencionPe}" title="#{myBundle.CreatePeticionTitle_extencionPe}" size="20" maxlength="20"/>
+
+                        <p:outputLabel value="#{myBundle.CreatePeticionLabel_destinoPe}" for="destinoPe" />
+                        <p:selectOneMenu id="destinoPe" value="#{peticionController.selected.destinoPe}"  converter="idiomaConverter">
+                            <f:selectItem itemLabel="#{myBundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{idiomaController.items}"
+                                           var="destinoPeItem"
+                                           itemValue="#{destinoPeItem}"
+                                           itemLabel="#{destinoPeItem.descripcionId.toString()}"
+                                           />
+
+                        </p:selectOneMenu>
+
+                        <p:outputLabel value="#{myBundle.CreatePeticionLabel_idiAbreviacionId}" for="idiAbreviacionId" />
+                        <p:selectOneMenu id="idiAbreviacionId" value="#{peticionController.selected.idiAbreviacionId}"  converter="idiomaConverter">
+                            <f:selectItem itemLabel="#{myBundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{idiomaController.items}"
+                                           var="idiAbreviacionIdItem"
+                                           itemValue="#{idiAbreviacionIdItem}"
+                                           itemLabel="#{idiAbreviacionIdItem.descripcionId.toString()}"
+                                           />
+
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{peticionController.saveNew}" value="#{myBundle.Save}" update="display,:PeticionListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,PF('PeticionCreateDialog'));">
+                        <p:confirm header="#{myBundle.ConfirmationHeader}" message="#{myBundle.ConfirmCreateMessage}" icon="ui-icon-alert"/>
+                    </p:commandButton>
+
+                    <p:commandButton value="#{myBundle.Cancel}" oncomplete="PF('PeticionCreateDialog').hide()" update="display" process="@this" immediate="true" resetValues="true"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

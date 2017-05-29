@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="PeticionViewDlg" widgetVar="PeticionViewDialog" modal="true" resizable="false"  appendTo="@(body)" header="#{myBundle.ViewPeticionTitle}" closeOnEscape="true">
+
+            <h:form id="PeticionViewForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" columnClasses="column" rendered="#{peticionController.selected != null}">
+
+                        <h:outputText value="#{myBundle.ViewPeticionLabel_codigoPe}"/>
+                        <h:outputText value="#{peticionController.selected.codigoPe}" title="#{myBundle.ViewPeticionTitle_codigoPe}"/>
+
+                        <h:outputText value="#{myBundle.ViewPeticionLabel_descripcionPe}"/>
+                        <h:outputText value="#{peticionController.selected.descripcionPe}" title="#{myBundle.ViewPeticionTitle_descripcionPe}"/>
+
+                        <h:outputText value="#{myBundle.ViewPeticionLabel_extencionPe}"/>
+                        <h:outputText value="#{peticionController.selected.extencionPe}" title="#{myBundle.ViewPeticionTitle_extencionPe}"/>
+
+                        <h:outputText value="#{myBundle.ViewPeticionLabel_destinoPe}"/>
+                        <h:outputText value="#{peticionController.selected.destinoPe.descripcionId}"/>
+
+                        <h:outputText value="#{myBundle.ViewPeticionLabel_idiAbreviacionId}"/>
+                        <h:outputText value="#{peticionController.selected.idiAbreviacionId.descripcionId}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{myBundle.Close}" onclick="PF('PeticionViewDialog').hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>
