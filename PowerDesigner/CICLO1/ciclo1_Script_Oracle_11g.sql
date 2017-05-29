@@ -1,6 +1,6 @@
 /*==============================================================*/
 /* DBMS name:      ORACLE Version 11g                           */
-/* Created on:     28/05/2017 23:38:26                          */
+/* Created on:     29/05/2017 16:36:38                          */
 /*==============================================================*/
 
 
@@ -10,8 +10,8 @@ alter table "Peticion"
 alter table "Peticion"
    drop constraint FK_PETICION_IDIOMAORI_IDIOMA;
 
-alter table "Usuario"
-   drop constraint FK_USUARIO_NECESITA_PETICION;
+alter table "Peticion"
+   drop constraint FK_PETICION_NECESITA_USUARIO;
 
 alter table "association4"
    drop constraint FK_ASSOCIAT_ASSOCIATI_IDIOMA;
@@ -36,8 +36,6 @@ drop index IDIOMAORIGEN_FK;
 drop table "Peticion" cascade constraints;
 
 drop table "Revisor" cascade constraints;
-
-drop index NECESITA_FK;
 
 drop table "Usuario" cascade constraints;
 
@@ -83,6 +81,7 @@ create table LOG
 create table "Peticion" 
 (
    "Codigo_pe"          INTEGER              not null,
+   "Correo_us"          CHAR(1)              not null,
    "Origen_pe"          CHAR(10),
    "Destino_pe"         CHAR(10),
    "Descripcion_pe"     CLOB                 not null,
@@ -120,17 +119,9 @@ create table "Revisor"
 create table "Usuario" 
 (
    "Correo_us"          CHAR(1)              not null,
-   "Codigo_pe"          INTEGER,
    "Nombre_us"          CHAR(1)              not null,
    "Contrasena_us"      CHAR(1)              not null,
    constraint PK_USUARIO primary key ("Correo_us")
-);
-
-/*==============================================================*/
-/* Index: NECESITA_FK                                           */
-/*==============================================================*/
-create index NECESITA_FK on "Usuario" (
-   "Codigo_pe" ASC
 );
 
 /*==============================================================*/
@@ -189,9 +180,9 @@ alter table "Peticion"
    add constraint FK_PETICION_IDIOMAORI_IDIOMA foreign key ("Origen_pe")
       references "Idioma" ("abreviacion");
 
-alter table "Usuario"
-   add constraint FK_USUARIO_NECESITA_PETICION foreign key ("Codigo_pe")
-      references "Peticion" ("Codigo_pe");
+alter table "Peticion"
+   add constraint FK_PETICION_NECESITA_USUARIO foreign key ("Codigo_pe")
+      references "Usuario" ("Codigo_pe");
 
 alter table "association4"
    add constraint FK_ASSOCIAT_ASSOCIATI_IDIOMA foreign key ("abreviacion")
