@@ -3803,7 +3803,7 @@ Shadow=0</a:DisplayPreferences>
 <o:AssociationSymbol Id="o7">
 <a:CreationDate>1493247784</a:CreationDate>
 <a:ModificationDate>1495318974</a:ModificationDate>
-<a:Rect>((18800,28588), (32590,30559))</a:Rect>
+<a:Rect>((18800,28587), (32590,30558))</a:Rect>
 <a:ListOfPoints>((19200,29540),(32190,29540))</a:ListOfPoints>
 <a:CornerStyle>2</a:CornerStyle>
 <a:ArrowStyle>8</a:ArrowStyle>
@@ -3824,7 +3824,7 @@ SOURCE 0 Arial,8,N</a:FontList>
 <o:AssociationSymbol Id="o11">
 <a:CreationDate>1493247788</a:CreationDate>
 <a:ModificationDate>1495317932</a:ModificationDate>
-<a:Rect>((-401,-30787), (3549,-19081))</a:Rect>
+<a:Rect>((-326,-30787), (3474,-19081))</a:Rect>
 <a:ListOfPoints>((1649,-30387),(1649,-19481))</a:ListOfPoints>
 <a:CornerStyle>2</a:CornerStyle>
 <a:ArrowStyle>8</a:ArrowStyle>
@@ -3908,7 +3908,7 @@ SOURCE 0 Arial,8,N</a:FontList>
 <o:AssociationSymbol Id="o25">
 <a:CreationDate>1493349844</a:CreationDate>
 <a:ModificationDate>1495315959</a:ModificationDate>
-<a:Rect>((-35833,19761), (-12438,21732))</a:Rect>
+<a:Rect>((-35833,19846), (-12438,21817))</a:Rect>
 <a:ListOfPoints>((-35433,20799),(-12838,20799))</a:ListOfPoints>
 <a:CornerStyle>2</a:CornerStyle>
 <a:ArrowStyle>0</a:ArrowStyle>
@@ -3929,7 +3929,7 @@ SOURCE 0 Arial,8,N</a:FontList>
 <o:AssociationSymbol Id="o28">
 <a:CreationDate>1493349925</a:CreationDate>
 <a:ModificationDate>1495318974</a:ModificationDate>
-<a:Rect>((17838,1373), (50290,21749))</a:Rect>
+<a:Rect>((17838,1371), (50215,21749))</a:Rect>
 <a:ListOfPoints>((48390,21349),(48390,1850),(18238,1850))</a:ListOfPoints>
 <a:CornerStyle>2</a:CornerStyle>
 <a:ArrowStyle>2048</a:ArrowStyle>
@@ -3971,7 +3971,7 @@ SOURCE 0 Arial,8,N</a:FontList>
 <o:AssociationSymbol Id="o32">
 <a:CreationDate>1493350543</a:CreationDate>
 <a:ModificationDate>1495312690</a:ModificationDate>
-<a:Rect>((-28650,811), (-14938,2782))</a:Rect>
+<a:Rect>((-28650,897), (-14938,2868))</a:Rect>
 <a:ListOfPoints>((-28250,1850),(-15338,1850))</a:ListOfPoints>
 <a:CornerStyle>2</a:CornerStyle>
 <a:ArrowStyle>2048</a:ArrowStyle>
@@ -3992,7 +3992,7 @@ SOURCE 0 Arial,8,N</a:FontList>
 <o:AssociationSymbol Id="o34">
 <a:CreationDate>1493350566</a:CreationDate>
 <a:ModificationDate>1495315959</a:ModificationDate>
-<a:Rect>((-35833,12824), (-11963,20532))</a:Rect>
+<a:Rect>((-35833,12824), (-11963,20616))</a:Rect>
 <a:ListOfPoints>((-35433,19599),(-13438,19599),(-13438,13224))</a:ListOfPoints>
 <a:CornerStyle>2</a:CornerStyle>
 <a:ArrowStyle>2048</a:ArrowStyle>
@@ -4056,7 +4056,7 @@ SOURCE 0 Arial,8,N</a:FontList>
 <o:AssociationSymbol Id="o40">
 <a:CreationDate>1493491555</a:CreationDate>
 <a:ModificationDate>1495218140</a:ModificationDate>
-<a:Rect>((-41013,26792), (3581,32195))</a:Rect>
+<a:Rect>((-41013,26818), (3581,32195))</a:Rect>
 <a:ListOfPoints>((-39788,31795),(-39788,28398),(3181,28398))</a:ListOfPoints>
 <a:CornerStyle>2</a:CornerStyle>
 <a:ArrowStyle>8</a:ArrowStyle>
@@ -10239,12 +10239,12 @@ DAT 1495211880</a:History>
 <a:Code>GENERALDETALLADO</a:Code>
 <a:CreationDate>1495315836</a:CreationDate>
 <a:Creator>Sebastian</a:Creator>
-<a:ModificationDate>1495318712</a:ModificationDate>
+<a:ModificationDate>1495990063</a:ModificationDate>
 <a:Modifier>Sebastian</a:Modifier>
 <a:TargetModelURL>file:///%[PRJ_ROOT_DIR]%/Modelo Conceptual.cdm</a:TargetModelURL>
 <a:TargetModelID>420BD1FA-3BCE-4920-8273-AA55EA53CB5C</a:TargetModelID>
 <a:TargetModelClassID>1E597170-9350-11D1-AB3C-0020AF71E433</a:TargetModelClassID>
-<a:TargetModelLastModificationDate>1495318712</a:TargetModelLastModificationDate>
+<a:TargetModelLastModificationDate>1495990063</a:TargetModelLastModificationDate>
 <c:SessionShortcuts>
 <o:Shortcut Ref="o4"/>
 </c:SessionShortcuts>
