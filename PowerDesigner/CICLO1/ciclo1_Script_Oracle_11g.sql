@@ -1,127 +1,128 @@
 /*==============================================================*/
 /* DBMS name:      ORACLE Version 11g                           */
-/* Created on:     29/05/2017 16:36:38                          */
+/* Created on:     30/05/2017 9:36:06                           */
 /*==============================================================*/
 
 
-alter table "Peticion"
-   drop constraint FK_PETICION_IDIOMADES_IDIOMA;
+alter table "peticion"
+   drop constraint fk_peticion_idiomades_idioma;
 
-alter table "Peticion"
-   drop constraint FK_PETICION_IDIOMAORI_IDIOMA;
+alter table "peticion"
+   drop constraint fk_peticion_idiomaori_idioma;
 
-alter table "Peticion"
-   drop constraint FK_PETICION_NECESITA_USUARIO;
-
-alter table "association4"
-   drop constraint FK_ASSOCIAT_ASSOCIATI_IDIOMA;
+alter table "peticion"
+   drop constraint fk_peticion_necesita_usuario;
 
 alter table "association4"
-   drop constraint FK_ASSOCIAT_ASSOCIATI_REVISOR;
+   drop constraint fk_associat_associati_idioma;
+
+alter table "association4"
+   drop constraint fk_associat_associati_revisor;
 
 alter table "sabe"
-   drop constraint FK_SABE_SABE_IDIOMA;
+   drop constraint fk_sabe_sabe_idioma;
 
 alter table "sabe"
-   drop constraint FK_SABE_SABE_USUARIO;
+   drop constraint fk_sabe_sabe_usuario;
 
-drop table "Idioma" cascade constraints;
+drop table "idioma" cascade constraints;
 
-drop table LOG cascade constraints;
+drop table log cascade constraints;
 
-drop index IDIOMADESTINO_FK;
+drop index idiomadestino_fk;
 
-drop index IDIOMAORIGEN_FK;
+drop index idiomaorigen_fk;
 
-drop table "Peticion" cascade constraints;
+drop table "peticion" cascade constraints;
 
-drop table "Revisor" cascade constraints;
+drop table "revisor" cascade constraints;
 
-drop table "Usuario" cascade constraints;
+drop table "usuario" cascade constraints;
 
-drop index ASSOCIATION4_FK2;
+drop index association4_fk2;
 
-drop index ASSOCIATION4_FK;
+drop index association4_fk;
 
 drop table "association4" cascade constraints;
 
-drop index SABE_FK2;
+drop index sabe_fk2;
 
-drop index SABE_FK;
+drop index sabe_fk;
 
 drop table "sabe" cascade constraints;
 
 /*==============================================================*/
-/* Table: "Idioma"                                              */
+/* Table: "idioma"                                              */
 /*==============================================================*/
-create table "Idioma" 
+create table "idioma" 
 (
-   "abreviacion"        CHAR(10)             not null,
-   "descripcion"        VARCHAR2(254)        not null,
-   constraint PK_IDIOMA primary key ("abreviacion")
+   "abreviacion"        char(10)             not null,
+   "descripcion"        varchar2(254)        not null,
+   constraint pk_idioma primary key ("abreviacion")
 );
 
 /*==============================================================*/
-/* Table: LOG                                                   */
+/* Table: log                                                   */
 /*==============================================================*/
-create table LOG 
+create table log 
 (
-   "Nick_log"           CHAR(200),
-   "Rol_log"            CHAR(30),
-   "sql_log"            VARCHAR2(250),
-   "tabla_log"          VARCHAR2(250),
-   "fecha_log"          TIMESTAMP,
-   "id_log"             INTEGER              not null,
-   constraint PK_LOG primary key ("id_log")
+   "nick_log"           char(200),
+   "rol_log"            char(30),
+   "sql_log"            varchar2(250),
+   "tabla_log"          varchar2(250),
+   "fecha_log"          timestamp,
+   "id_log"             integer              not null,
+   constraint pk_log primary key ("id_log")
 );
 
 /*==============================================================*/
-/* Table: "Peticion"                                            */
+/* Table: "peticion"                                            */
 /*==============================================================*/
-create table "Peticion" 
+create table "peticion" 
 (
-   "Codigo_pe"          INTEGER              not null,
-   "Correo_us"          CHAR(1)              not null,
-   "Origen_pe"          CHAR(10),
-   "Destino_pe"         CHAR(10),
-   "Descripcion_pe"     CLOB                 not null,
-   "extencion"          CHAR(10)             not null,
-   constraint PK_PETICION primary key ("Codigo_pe")
+   "codigo_pe"          integer              not null,
+   "correo_us"          char(1)              not null,
+   "origen_pe"          char(10),
+   "destino_pe"         char(10),
+   "descripcion_pe"     clob                 not null,
+   "tipo_pe"            char(10)             not null,
+   "estado_pe"          smallint,
+   constraint pk_peticion primary key ("codigo_pe")
 );
 
 /*==============================================================*/
-/* Index: IDIOMAORIGEN_FK                                       */
+/* Index: idiomaorigen_fk                                       */
 /*==============================================================*/
-create index IDIOMAORIGEN_FK on "Peticion" (
-   "Origen_pe" ASC
+create index idiomaorigen_fk on "peticion" (
+   "origen_pe" asc
 );
 
 /*==============================================================*/
-/* Index: IDIOMADESTINO_FK                                      */
+/* Index: idiomadestino_fk                                      */
 /*==============================================================*/
-create index IDIOMADESTINO_FK on "Peticion" (
-   "Destino_pe" ASC
+create index idiomadestino_fk on "peticion" (
+   "destino_pe" asc
 );
 
 /*==============================================================*/
-/* Table: "Revisor"                                             */
+/* Table: "revisor"                                             */
 /*==============================================================*/
-create table "Revisor" 
+create table "revisor" 
 (
-   "CorreoElectronico_re" VARCHAR2(254)        not null,
-   "Nombre_re"          VARCHAR2(254),
-   constraint PK_REVISOR primary key ("CorreoElectronico_re")
+   "correoelectronico_re" varchar2(254)        not null,
+   "nombre_re"          varchar2(254),
+   constraint pk_revisor primary key ("correoelectronico_re")
 );
 
 /*==============================================================*/
-/* Table: "Usuario"                                             */
+/* Table: "usuario"                                             */
 /*==============================================================*/
-create table "Usuario" 
+create table "usuario" 
 (
-   "Correo_us"          CHAR(1)              not null,
-   "Nombre_us"          CHAR(1)              not null,
-   "Contrasena_us"      CHAR(1)              not null,
-   constraint PK_USUARIO primary key ("Correo_us")
+   "correo_us"          char(1)              not null,
+   "nombre_us"          char(1)              not null,
+   "contrasena_us"      char(1)              not null,
+   constraint pk_usuario primary key ("correo_us")
 );
 
 /*==============================================================*/
@@ -129,23 +130,23 @@ create table "Usuario"
 /*==============================================================*/
 create table "association4" 
 (
-   "abreviacion"        CHAR(10)             not null,
-   "CorreoElectronico_re" VARCHAR2(254)        not null,
-   constraint PK_ASSOCIATION4 primary key ("abreviacion", "CorreoElectronico_re")
+   "abreviacion"        char(10)             not null,
+   "correoelectronico_re" varchar2(254)        not null,
+   constraint pk_association4 primary key ("abreviacion", "correoelectronico_re")
 );
 
 /*==============================================================*/
-/* Index: ASSOCIATION4_FK                                       */
+/* Index: association4_fk                                       */
 /*==============================================================*/
-create index ASSOCIATION4_FK on "association4" (
-   "CorreoElectronico_re" ASC
+create index association4_fk on "association4" (
+   "correoelectronico_re" asc
 );
 
 /*==============================================================*/
-/* Index: ASSOCIATION4_FK2                                      */
+/* Index: association4_fk2                                      */
 /*==============================================================*/
-create index ASSOCIATION4_FK2 on "association4" (
-   "abreviacion" ASC
+create index association4_fk2 on "association4" (
+   "abreviacion" asc
 );
 
 /*==============================================================*/
@@ -153,50 +154,50 @@ create index ASSOCIATION4_FK2 on "association4" (
 /*==============================================================*/
 create table "sabe" 
 (
-   "abreviacion"        CHAR(10)             not null,
-   "Correo_us"          CHAR(1)              not null,
-   constraint PK_SABE primary key ("abreviacion", "Correo_us")
+   "abreviacion"        char(10)             not null,
+   "correo_us"          char(1)              not null,
+   constraint pk_sabe primary key ("abreviacion", "correo_us")
 );
 
 /*==============================================================*/
-/* Index: SABE_FK                                               */
+/* Index: sabe_fk                                               */
 /*==============================================================*/
-create index SABE_FK on "sabe" (
-   "Correo_us" ASC
+create index sabe_fk on "sabe" (
+   "correo_us" asc
 );
 
 /*==============================================================*/
-/* Index: SABE_FK2                                              */
+/* Index: sabe_fk2                                              */
 /*==============================================================*/
-create index SABE_FK2 on "sabe" (
-   "abreviacion" ASC
+create index sabe_fk2 on "sabe" (
+   "abreviacion" asc
 );
 
-alter table "Peticion"
-   add constraint FK_PETICION_IDIOMADES_IDIOMA foreign key ("Destino_pe")
-      references "Idioma" ("abreviacion");
+alter table "peticion"
+   add constraint fk_peticion_idiomades_idioma foreign key ("destino_pe")
+      references "idioma" ("abreviacion");
 
-alter table "Peticion"
-   add constraint FK_PETICION_IDIOMAORI_IDIOMA foreign key ("Origen_pe")
-      references "Idioma" ("abreviacion");
+alter table "peticion"
+   add constraint fk_peticion_idiomaori_idioma foreign key ("origen_pe")
+      references "idioma" ("abreviacion");
 
-alter table "Peticion"
-   add constraint FK_PETICION_NECESITA_USUARIO foreign key ("Codigo_pe")
-      references "Usuario" ("Codigo_pe");
+alter table "peticion"
+   add constraint fk_peticion_necesita_usuario foreign key ("codigo_pe")
+      references "usuario" ("codigo_pe");
 
 alter table "association4"
-   add constraint FK_ASSOCIAT_ASSOCIATI_IDIOMA foreign key ("abreviacion")
-      references "Idioma" ("abreviacion");
+   add constraint fk_associat_associati_idioma foreign key ("abreviacion")
+      references "idioma" ("abreviacion");
 
 alter table "association4"
-   add constraint FK_ASSOCIAT_ASSOCIATI_REVISOR foreign key ("CorreoElectronico_re")
-      references "Revisor" ("CorreoElectronico_re");
+   add constraint fk_associat_associati_revisor foreign key ("correoelectronico_re")
+      references "revisor" ("correoelectronico_re");
 
 alter table "sabe"
-   add constraint FK_SABE_SABE_IDIOMA foreign key ("abreviacion")
-      references "Idioma" ("abreviacion");
+   add constraint fk_sabe_sabe_idioma foreign key ("abreviacion")
+      references "idioma" ("abreviacion");
 
 alter table "sabe"
-   add constraint FK_SABE_SABE_USUARIO foreign key ("Correo_us")
-      references "Usuario" ("Correo_us");
+   add constraint fk_sabe_sabe_usuario foreign key ("correo_us")
+      references "usuario" ("correo_us");
 
