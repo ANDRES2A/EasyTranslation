@@ -116,20 +116,20 @@ BEGIN
      SELECT user INTO rol_log FROM dual;
   IF INSERTING THEN
      sql_log:=CONCAT('Insert ',:nuevo."CorreoElectronico_re");
-     INSERT INTO LOG ("Nick_log","Rol_log","sql_log","tabla_log","fecha_log","id_log") VALUES (nick_log,rol_log,sql_log,'Peticion',CURRENT_TIMESTAMP,id_log);
+     INSERT INTO LOG ("Nick_log","Rol_log","sql_log","tabla_log","fecha_log","id_log") VALUES (nick_log,rol_log,sql_log,'Revisor',CURRENT_TIMESTAMP,id_log);
   END IF;
   IF DELETING  THEN
      sql_log:=CONCAT('Eliminado ',:antiguo."CorreoElectronico_re");
-     INSERT INTO LOG ("Nick_log","Rol_log","sql_log","tabla_log","fecha_log","id_log") VALUES (nick_log,rol_log,sql_log,'Peticion',CURRENT_TIMESTAMP,id_log);
+     INSERT INTO LOG ("Nick_log","Rol_log","sql_log","tabla_log","fecha_log","id_log") VALUES (nick_log,rol_log,sql_log,'Revisor',CURRENT_TIMESTAMP,id_log);
   END IF;
   IF UPDATING  THEN
      IF antiguo."CorreoElectronico_re"!=nuevo."CorreoElectronico_re" THEN
         sql_log:=CONCAT(CONCAT(CONCAT('Actualizado ',:antiguo."CorreoElectronico_re"),' a '),:nuevo."CorreoElectronico_re");
-        INSERT INTO LOG ("Nick_log","Rol_log","sql_log","tabla_log","fecha_log","id_log") VALUES (nick_log,rol_log,sql_log,'Peticion',CURRENT_TIMESTAMP,id_log);
+        INSERT INTO LOG ("Nick_log","Rol_log","sql_log","tabla_log","fecha_log","id_log") VALUES (nick_log,rol_log,sql_log,'Revisor',CURRENT_TIMESTAMP,id_log);
      END IF;
      IF antiguo."Nombre_re"!=nuevo."Nombre_re" THEN
         sql_log:=CONCAT(CONCAT(CONCAT('Actualizado ',:antiguo."Nombre_re"),' a '),:nuevo."Nombre_re");
-        INSERT INTO LOG ("Nick_log","Rol_log","sql_log","tabla_log","fecha_log","id_log") VALUES (nick_log,rol_log,sql_log,'Peticion',CURRENT_TIMESTAMP,id_log);
+        INSERT INTO LOG ("Nick_log","Rol_log","sql_log","tabla_log","fecha_log","id_log") VALUES (nick_log,rol_log,sql_log,'Revisor',CURRENT_TIMESTAMP,id_log);
      END IF;
   END IF;
 END;
