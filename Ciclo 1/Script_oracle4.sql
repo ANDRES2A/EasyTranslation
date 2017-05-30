@@ -1,6 +1,6 @@
 /*==============================================================*/
 /* DBMS name:      ORACLE Version 11g                           */
-/* Created on:     30/5/2017 11:50:49                           */
+/* Created on:     30/5/2017 13:02:34                           */
 /*==============================================================*/
 
 
@@ -9,6 +9,9 @@ alter table PETICION
 
 alter table PETICION
    drop constraint FK_PETICION_IDIOMA_OR_IDIOMA;
+
+alter table PETICION
+   drop constraint FK_PETICION_NECESITA_USUARIO;
 
 alter table SABE
    drop constraint FK_SABE_SABE_IDIOMA;
@@ -24,6 +27,8 @@ alter table SABE_REVISOR
 
 drop table IDIOMA cascade constraints;
 
+drop index NECESITA_FK;
+
 drop index IDIOMA_DESTINO_FK;
 
 drop index IDIOMA_ORIGEN_FK;
@@ -37,6 +42,8 @@ drop index SABE_FK;
 drop index SABE2_FK;
 
 drop table SABE cascade constraints;
+
+drop index SABE_REVISOR_FK;
 
 drop index SABE_REVISOR2_FK;
 
@@ -62,6 +69,7 @@ create table PETICION
    CODIGO_PE            INTEGER              not null,
    ABREVIACION_ID       VARCHAR2(10),
    IDI_ABREVIACION_ID   VARCHAR2(10),
+   CORREO_US            VARCHAR2(255),
    DESCRIPCION_PE       CLOB,
    TIPO_PE              VARCHAR2(10),
    FECHA_EMISION_PE     DATE,
@@ -81,6 +89,13 @@ create index IDIOMA_ORIGEN_FK on PETICION (
 /*==============================================================*/
 create index IDIOMA_DESTINO_FK on PETICION (
    IDI_ABREVIACION_ID ASC
+);
+
+/*==============================================================*/
+/* Index: NECESITA_FK                                           */
+/*==============================================================*/
+create index NECESITA_FK on PETICION (
+   CORREO_US ASC
 );
 
 /*==============================================================*/
@@ -138,6 +153,13 @@ create index SABE_REVISOR2_FK on SABE_REVISOR (
 );
 
 /*==============================================================*/
+/* Index: SABE_REVISOR_FK                                       */
+/*==============================================================*/
+create index SABE_REVISOR_FK on SABE_REVISOR (
+   ABREVIACION_ID ASC
+);
+
+/*==============================================================*/
 /* Table: USUARIO                                               */
 /*==============================================================*/
 create table USUARIO 
@@ -156,6 +178,10 @@ alter table PETICION
 alter table PETICION
    add constraint FK_PETICION_IDIOMA_OR_IDIOMA foreign key (ABREVIACION_ID)
       references IDIOMA (ABREVIACION_ID);
+
+alter table PETICION
+   add constraint FK_PETICION_NECESITA_USUARIO foreign key (CORREO_US)
+      references USUARIO (CORREO_US);
 
 alter table SABE
    add constraint FK_SABE_SABE_IDIOMA foreign key (ABREVIACION_ID)

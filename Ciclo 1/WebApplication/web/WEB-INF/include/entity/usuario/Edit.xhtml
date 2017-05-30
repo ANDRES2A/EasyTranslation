@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+        <p:dialog id="UsuarioEditDlg" widgetVar="UsuarioEditDialog" modal="true" resizable="false"  appendTo="@(body)" header="#{myBundle.EditUsuarioTitle}" closeOnEscape="true">
+
+            <h:form id="UsuarioEditForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid  columns="2" columnClasses="column" rendered="#{usuarioController.selected != null}">
+
+
+                        <h:outputLabel value="#{myBundle.EditUsuarioLabel_correoUs}" for="correoUs" />
+                        <h:outputText id="correoUs" value="#{usuarioController.selected.correoUs}" />
+
+                        <p:outputLabel value="#{myBundle.EditUsuarioLabel_nombreUs}" for="nombreUs" />
+                        <p:inputText id="nombreUs" value="#{usuarioController.selected.nombreUs}" title="#{myBundle.EditUsuarioTitle_nombreUs}" size="100" maxlength="100"/>
+
+                        <p:outputLabel value="#{myBundle.EditUsuarioLabel_passwordUs}" for="passwordUs" />
+                        <p:inputText id="passwordUs" value="#{usuarioController.selected.passwordUs}" title="#{myBundle.EditUsuarioTitle_passwordUs}" size="255" maxlength="255"/>
+
+                        <p:outputLabel value="#{myBundle.EditUsuarioLabel_fechaNacimientoUs}" for="fechaNacimientoUs" />
+                        <p:calendar id="fechaNacimientoUs" pattern="dd/MM/yyyy" value="#{usuarioController.selected.fechaNacimientoUs}" title="#{myBundle.EditUsuarioTitle_fechaNacimientoUs}"  showOn="button"/>
+
+                        <p:outputLabel value="#{myBundle.EditUsuarioLabel_idiomaCollection}" for="idiomaCollection" />
+                        <p:selectManyMenu id="idiomaCollection" value="#{usuarioController.selected.idiomaCollection}"  converter="idiomaConverter" filter="true" filterMatchMode="contains" showCheckbox="true" style="width: 300px ">
+                            <f:attribute name="collectionType" value="java.util.ArrayList"/>
+                            <f:selectItems value="#{idiomaController.items}"
+                                           var="idiomaCollectionItem"
+                                           itemValue="#{idiomaCollectionItem}"
+                                           itemLabel="#{idiomaCollectionItem.descripcionId.toString()}"
+                                           />
+
+                        </p:selectManyMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{usuarioController.save}" value="#{myBundle.Save}" update="display,:UsuarioListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,PF('UsuarioEditDialog'));">
+                        <p:confirm header="#{myBundle.ConfirmationHeader}" message="#{myBundle.ConfirmEditMessage}" icon="ui-icon-alert"/>
+                    </p:commandButton>
+                    <p:commandButton value="#{myBundle.Cancel}" oncomplete="PF('UsuarioEditDialog').hide()" update="display" process="@this" immediate="true" resetValues="true"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>
