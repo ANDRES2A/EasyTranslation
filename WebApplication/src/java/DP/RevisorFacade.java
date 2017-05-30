@@ -24,7 +24,7 @@ import java.util.Collection;
 @Stateless
 public class RevisorFacade extends AbstractFacade<Revisor> {
 
-    @PersistenceContext(unitName = "EasyTranslationPU")
+    @PersistenceContext(unitName = "WebApplicationPU")
     private EntityManager em;
 
     @Override

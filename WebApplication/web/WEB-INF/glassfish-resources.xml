@@ -10,5 +10,5 @@
         <property name="URL" value="jdbc:oracle:thin:@localhost:1521:orcl"/>
         <property name="driverClass" value="oracle.jdbc.OracleDriver"/>
     </jdbc-connection-pool>
-    <jdbc-resource enabled="true" jndi-name="java:app/easytranslation" object-type="user" pool-name="oracle-thin_orcl_easytranslationPool"/>
+    <jdbc-resource enabled="true" jndi-name="java:app/EasyTranslation" object-type="user" pool-name="oracle-thin_orcl_easytranslationPool"/>
 </resources>

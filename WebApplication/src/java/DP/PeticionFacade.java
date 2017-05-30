@@ -23,7 +23,7 @@ import MD.Idioma;
 @Stateless
 public class PeticionFacade extends AbstractFacade<Peticion> {
 
-    @PersistenceContext(unitName = "EasyTranslationPU")
+    @PersistenceContext(unitName = "WebApplicationPU")
     private EntityManager em;
 
     @Override

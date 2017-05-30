@@ -22,14 +22,21 @@
                         <p:inputTextarea rows="4" cols="30" id="descripcionPe" value="#{peticionController.selected.descripcionPe}" title="#{myBundle.CreatePeticionTitle_descripcionPe}" />
 
                         <p:outputLabel value="#{myBundle.CreatePeticionLabel_tipoPe}" for="tipoPe" />
-                        <p:inputText id="tipoPe" value="#{peticionController.selected.tipoPe}" title="#{myBundle.CreatePeticionTitle_tipoPe}" size="10" maxlength="10"/>
-
+                        <p:selectOneMenu id="tipoPe" value="#{peticionController.selected.tipoPe}" style="width: 300px">
+                            <f:selectItem itemLabel="Texto" itemValue="Texto" />
+                            <f:selectItem itemLabel="Fotografía" itemValue="Fotografía" />
+                            <f:selectItem itemLabel="Video" itemValue="Video" />
+                            <f:selectItem itemLabel="Audio" itemValue="Audio" />
+                        </p:selectOneMenu>
                         <p:outputLabel value="#{myBundle.CreatePeticionLabel_fechaEmisionPe}" for="fechaEmisionPe" />
                         <p:calendar id="fechaEmisionPe" pattern="MM/dd/yyyy HH:mm:ss" value="#{peticionController.selected.fechaEmisionPe}" title="#{myBundle.CreatePeticionTitle_fechaEmisionPe}"  showOn="button"/>
 
                         <p:outputLabel value="#{myBundle.CreatePeticionLabel_estadoPe}" for="estadoPe" />
-                        <p:inputText id="estadoPe" value="#{peticionController.selected.estadoPe}" title="#{myBundle.CreatePeticionTitle_estadoPe}"/>
-
+                        <p:selectOneMenu id="estadoPe" value="#{peticionController.selected.estadoPe}" style="width: 300px" >
+                            <f:selectItem itemLabel="Revisión" itemValue="Revisión" />
+                            <f:selectItem itemLabel="Incompleta" itemValue="Incompleta" />
+                            <f:selectItem itemLabel="Completada" itemValue="Completada" />
+                        </p:selectOneMenu>
                         <p:outputLabel value="#{myBundle.CreatePeticionLabel_idiAbreviacionId}" for="idiAbreviacionId" />
                         <p:selectOneMenu id="idiAbreviacionId" value="#{peticionController.selected.idiAbreviacionId}"  converter="idiomaConverter">
                             <f:selectItem itemLabel="#{myBundle.SelectOneMessage}"/>

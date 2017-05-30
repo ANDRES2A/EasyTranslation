@@ -25,7 +25,7 @@ import java.util.Collection;
 @Stateless
 public class UsuarioFacade extends AbstractFacade<Usuario> {
 
-    @PersistenceContext(unitName = "EasyTranslationPU")
+    @PersistenceContext(unitName = "WebApplicationPU")
     private EntityManager em;
 
     @Override
