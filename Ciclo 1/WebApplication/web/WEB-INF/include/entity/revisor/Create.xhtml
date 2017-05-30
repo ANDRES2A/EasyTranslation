@@ -16,19 +16,23 @@
                     <p:panelGrid columns="2" columnClasses="column">
 
                         <p:outputLabel value="#{myBundle.CreateRevisorLabel_correoRe}" for="correoRe" />
-                        <p:inputText id="correoRe" value="#{revisorController.selected.correoRe}" title="#{myBundle.CreateRevisorTitle_correoRe}" required="true" requiredMessage="#{myBundle.CreateRevisorRequiredMessage_correoRe}" size="255" maxlength="255"/>
+                        <p:inputText id="correoRe" value="#{revisorController.selected.correoRe}" title="#{myBundle.CreateRevisorTitle_correoRe}" required="true" requiredMessage="#{myBundle.CreateRevisorRequiredMessage_correoRe}" size="50" maxlength="255"/>
 
                         <p:outputLabel value="#{myBundle.CreateRevisorLabel_nombreRe}" for="nombreRe" />
-                        <p:inputText id="nombreRe" value="#{revisorController.selected.nombreRe}" title="#{myBundle.CreateRevisorTitle_nombreRe}" size="100" maxlength="100"/>
+                        <p:inputText id="nombreRe" value="#{revisorController.selected.nombreRe}" title="#{myBundle.CreateRevisorTitle_nombreRe}" size="50" maxlength="100"/>
 
                         <p:outputLabel value="#{myBundle.CreateRevisorLabel_passwordRe}" for="passwordRe" />
-                        <p:inputText id="passwordRe" value="#{revisorController.selected.passwordRe}" title="#{myBundle.CreateRevisorTitle_passwordRe}" size="255" maxlength="255"/>
+                        <p:password id="passwordRe" value="#{revisorController.selected.passwordRe}" title="#{myBundle.CreateRevisorTitle_passwordRe}" size="50" maxlength="255"/>
 
                         <p:outputLabel value="#{myBundle.CreateRevisorLabel_fechaNacimientoRe}" for="fechaNacimientoRe" />
-                        <p:calendar id="fechaNacimientoRe" pattern="MM/dd/yyyy HH:mm:ss" value="#{revisorController.selected.fechaNacimientoRe}" title="#{myBundle.CreateRevisorTitle_fechaNacimientoRe}"  showOn="button"/>
+                        <p:calendar id="fechaNacimientoRe" pattern="dd/MM/yyyy" value="#{revisorController.selected.fechaNacimientoRe}" title="#{myBundle.CreateRevisorTitle_fechaNacimientoRe}"  showOn="button"/>
 
                         <p:outputLabel value="#{myBundle.CreateRevisorLabel_experiencia}" for="experiencia" />
-                        <p:inputText id="experiencia" value="#{revisorController.selected.experiencia}" title="#{myBundle.CreateRevisorTitle_experiencia}" size="10" maxlength="10"/>
+                        <p:selectOneMenu id="experiencia" value="#{revisorController.selected.experiencia}">
+                            <f:selectItem itemLabel="Alta" itemValue="Alta" />
+                            <f:selectItem itemLabel="Media" itemValue="Media" />
+                            <f:selectItem itemLabel="Baja" itemValue="Baja" />
+                        </p:selectOneMenu>  
                     </p:panelGrid>
                     <p:commandButton actionListener="#{revisorController.saveNew}" value="#{myBundle.Save}" update="display,:RevisorListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,PF('RevisorCreateDialog'));">
                         <p:confirm header="#{myBundle.ConfirmationHeader}" message="#{myBundle.ConfirmCreateMessage}" icon="ui-icon-alert"/>

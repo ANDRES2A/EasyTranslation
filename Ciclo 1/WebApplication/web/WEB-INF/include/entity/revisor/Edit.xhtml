@@ -25,7 +25,7 @@
                         <p:inputText id="passwordRe" value="#{revisorController.selected.passwordRe}" title="#{myBundle.EditRevisorTitle_passwordRe}" size="255" maxlength="255"/>
 
                         <p:outputLabel value="#{myBundle.EditRevisorLabel_fechaNacimientoRe}" for="fechaNacimientoRe" />
-                        <p:calendar id="fechaNacimientoRe" pattern="MM/dd/yyyy HH:mm:ss" value="#{revisorController.selected.fechaNacimientoRe}" title="#{myBundle.EditRevisorTitle_fechaNacimientoRe}"  showOn="button"/>
+                        <p:calendar id="fechaNacimientoRe" pattern="dd/MM/yyyy" value="#{revisorController.selected.fechaNacimientoRe}" title="#{myBundle.EditRevisorTitle_fechaNacimientoRe}"  showOn="button"/>
 
                         <p:outputLabel value="#{myBundle.EditRevisorLabel_experiencia}" for="experiencia" />
                         <p:inputText id="experiencia" value="#{revisorController.selected.experiencia}" title="#{myBundle.EditRevisorTitle_experiencia}" size="10" maxlength="10"/>
