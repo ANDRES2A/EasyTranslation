@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="RevisorViewDlg" widgetVar="RevisorViewDialog" modal="true" resizable="false"  appendTo="@(body)" header="#{myBundle.ViewRevisorTitle}" closeOnEscape="true">
+
+            <h:form id="RevisorViewForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" columnClasses="column" rendered="#{revisorController.selected != null}">
+
+                        <h:outputText value="#{myBundle.ViewRevisorLabel_correoRe}"/>
+                        <h:outputText value="#{revisorController.selected.correoRe}" title="#{myBundle.ViewRevisorTitle_correoRe}"/>
+
+                        <h:outputText value="#{myBundle.ViewRevisorLabel_nombreRe}"/>
+                        <h:outputText value="#{revisorController.selected.nombreRe}" title="#{myBundle.ViewRevisorTitle_nombreRe}"/>
+
+                        <h:outputText value="#{myBundle.ViewRevisorLabel_passwordRe}"/>
+                        <h:outputText value="#{revisorController.selected.passwordRe}" title="#{myBundle.ViewRevisorTitle_passwordRe}"/>
+
+                        <h:outputText value="#{myBundle.ViewRevisorLabel_fechaNacimientoRe}"/>
+                        <h:outputText value="#{revisorController.selected.fechaNacimientoRe}" title="#{myBundle.ViewRevisorTitle_fechaNacimientoRe}">
+                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                        </h:outputText>
+
+                        <h:outputText value="#{myBundle.ViewRevisorLabel_experiencia}"/>
+                        <h:outputText value="#{revisorController.selected.experiencia}" title="#{myBundle.ViewRevisorTitle_experiencia}"/>
+
+                        <h:outputText value="#{myBundle.ViewRevisorLabel_usuarioCollection}"/>
+                        <h:selectManyMenu converter="usuarioConverter">
+                            <f:selectItems value="#{revisorController.selected.usuarioCollection}"
+                                           var="usuarioCollectionItem"
+                                           itemValue="#{usuarioCollectionItem}"
+                                           itemLabel="#{usuarioCollectionItem.correoUs.toString()}"
+                                           />
+
+                        </h:selectManyMenu>
+                    </p:panelGrid>
+                    <p:commandButton value="#{myBundle.Close}" onclick="PF('RevisorViewDialog').hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>
