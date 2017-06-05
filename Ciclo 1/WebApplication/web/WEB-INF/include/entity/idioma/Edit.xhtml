@@ -21,6 +21,17 @@
                         <p:outputLabel value="#{myBundle.EditIdiomaLabel_descripcionId}" for="descripcionId" />
                         <p:inputText id="descripcionId" value="#{idiomaController.selected.descripcionId}" title="#{myBundle.EditIdiomaTitle_descripcionId}" size="100" maxlength="100"/>
 
+                        <p:outputLabel value="#{myBundle.EditIdiomaLabel_revisorCollection}" for="revisorCollection" />
+                        <!--
+                        <p:selectManyMenu id="revisorCollection" value="#{idiomaController.selected.revisorCollection}"  converter="revisorConverter">
+                            <f:attribute name="collectionType" value="java.util.ArrayList"/>
+                            <f:selectItems value="#{revisorController.items}"
+                                           var="revisorCollectionItem"
+                                           itemValue="#{revisorCollectionItem}"
+                                           itemLabel="#{revisorCollectionItem.correoRe.toString()}"
+                                           />
+                        </p:selectManyMenu>
+                        -->
                     </p:panelGrid>
                     <p:commandButton actionListener="#{idiomaController.save}" value="#{myBundle.Save}" update="display,:IdiomaListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,PF('IdiomaEditDialog'));">
                         <p:confirm header="#{myBundle.ConfirmationHeader}" message="#{myBundle.ConfirmEditMessage}" icon="ui-icon-alert"/>
