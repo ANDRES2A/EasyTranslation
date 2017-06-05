@@ -20,17 +20,7 @@
 
                         <h:outputText value="#{myBundle.ViewIdiomaLabel_descripcionId}"/>
                         <h:outputText value="#{idiomaController.selected.descripcionId}" title="#{myBundle.ViewIdiomaTitle_descripcionId}"/>
-                        <!--
-                        <h:outputText value="#{myBundle.ViewIdiomaLabel_revisorCollection}"/>
-                        <h:selectManyMenu converter="revisorConverter">
-                            <f:selectItems value="#{idiomaController.selected.revisorCollection}"
-                                           var="revisorCollectionItem"
-                                           itemValue="#{revisorCollectionItem}"
-                                           itemLabel="#{revisorCollectionItem.correoRe.toString()}"
-                                           />
 
-                        </h:selectManyMenu>
-                       -->
                     </p:panelGrid>
                     <p:commandButton value="#{myBundle.Close}" onclick="PF('IdiomaViewDialog').hide()"/>
                 </h:panelGroup>
