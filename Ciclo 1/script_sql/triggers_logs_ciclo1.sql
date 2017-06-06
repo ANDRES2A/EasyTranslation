@@ -1,3 +1,15 @@
+/*Creacion de tabla LOG*/
+create table log
+(
+   "nick_log"           char(200),
+   "rol_log"            char(30),
+   "sql_log"            varchar2(250),
+   "tabla_log"          varchar2(250),
+   "fecha_log"          timestamp,
+   "id_log"             integer              not null,
+   constraint pk_log primary key ("id_log")
+);
+
 /* trigger de idiomas*/
 CREATE OR REPLACE TRIGGER idioma_log
 AFTER INSERT OR UPDATE OR DELETE ON "Idioma"
