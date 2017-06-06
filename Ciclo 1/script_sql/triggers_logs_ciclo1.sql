@@ -1,147 +1,155 @@
 /*Creacion de tabla LOG*/
-create table log
+create table LOG
 (
-   "nick_log"           char(200),
-   "rol_log"            char(30),
-   "sql_log"            varchar2(250),
-   "tabla_log"          varchar2(250),
-   "fecha_log"          timestamp,
-   "id_log"             integer              not null,
-   constraint pk_log primary key ("id_log")
+   "NICK_LOG"           char(200),
+   "ROL_LOG"            char(30),
+   "SQL_LOG"            varchar2(250),
+   "TABLA_LOG"          varchar2(250),
+   "FECHA_LOG"          timestamp,
+   "ID_LOG"             integer              not null,
+   constraint pk_log primary key ("ID_LOG")
 );
 
 /* trigger de idiomas*/
 CREATE OR REPLACE TRIGGER idioma_log
-AFTER INSERT OR UPDATE OR DELETE ON "Idioma"
+AFTER INSERT OR UPDATE OR DELETE ON "IDIOMA"
    REFERENCING OLD AS antiguo NEW AS nuevo
    FOR EACH ROW
    DECLARE
-      id_log NUMBER;
-      nick_log VARCHAR2(30);
-      rol_log VARCHAR2(30);
-      sql_log VARCHAR2(250);
+      ID_LOG NUMBER;
+      NICK_LOG VARCHAR2(30);
+      ROL_LOG VARCHAR2(30);
+      SQL_LOG VARCHAR2(250);
 BEGIN
-     SELECT COUNT(*)+1 INTO id_log FROM LOG;
-     SELECT sys_context('USERENV','HOST') INTO nick_log FROM dual;
-     SELECT user INTO rol_log FROM dual;
+     SELECT COUNT(*)+1 INTO ID_LOG FROM LOG;
+     SELECT sys_context('USERENV','HOST') INTO NICK_LOG FROM dual;
+     SELECT user INTO ROL_LOG FROM dual;
   IF INSERTING THEN
-     sql_log:=CONCAT('Insert ',:nuevo."descripcion");
+     SQL_LOG:=CONCAT('Insert ',:nuevo."DESCRIPCION_ID");
   END IF;
   IF DELETING  THEN
-     sql_log:=CONCAT('Eliminado ',:antiguo."descripcion");
+     SQL_LOG:=CONCAT('Eliminado ',:antiguo."DESCRIPCION_ID");
   END IF;
   IF UPDATING  THEN
-     sql_log:=CONCAT(CONCAT(CONCAT('Actualizado ',:antiguo."descripcion"),' a '),:nuevo."descripcion");
+     SQL_LOG:=CONCAT(CONCAT(CONCAT('Actualizado ',:antiguo."DESCRIPCION_ID"),' a '),:nuevo."DESCRIPCION_ID");
   END IF;
-  INSERT INTO LOG ("Nick_log","Rol_log","sql_log","tabla_log","fecha_log","id_log") VALUES (nick_log,rol_log,sql_log,'Idioma',CURRENT_TIMESTAMP,id_log);
+  INSERT INTO LOG ("NICK_LOG","ROL_LOG","SQL_LOG","TABLA_LOG","FECHA_LOG","ID_LOG") VALUES (NICK_LOG,ROL_LOG,SQL_LOG,'Idioma',CURRENT_TIMESTAMP,ID_LOG);
 END;
 
 /* trigger de usuarios*/
 CREATE OR REPLACE TRIGGER usuario_log
-AFTER INSERT OR UPDATE OR DELETE ON "Usuario"
+AFTER INSERT OR UPDATE OR DELETE ON "USUARIO"
    REFERENCING OLD AS antiguo NEW AS nuevo
    FOR EACH ROW
    DECLARE
-      id_log NUMBER;
-      nick_log VARCHAR2(30);
-      rol_log VARCHAR2(30);
-      sql_log VARCHAR2(250);
+      ID_LOG NUMBER;
+      NICK_LOG VARCHAR2(30);
+      ROL_LOG VARCHAR2(30);
+      SQL_LOG VARCHAR2(250);
 BEGIN
-     SELECT COUNT(*)+1 INTO id_log FROM LOG;
-     SELECT sys_context('USERENV','HOST') INTO nick_log FROM dual;
-     SELECT user INTO rol_log FROM dual;
+     SELECT COUNT(*)+1 INTO ID_LOG FROM LOG;
+     SELECT sys_context('USERENV','HOST') INTO NICK_LOG FROM dual;
+     SELECT user INTO ROL_LOG FROM dual;
   IF INSERTING THEN
-     sql_log:=CONCAT('Insert ',:nuevo."Correo_us");
-     INSERT INTO LOG ("Nick_log","Rol_log","sql_log","tabla_log","fecha_log","id_log") VALUES (nick_log,rol_log,sql_log,'Usuario',CURRENT_TIMESTAMP,id_log);
+     SQL_LOG:=CONCAT('Insert ',:nuevo."CORREO_US");
+     INSERT INTO LOG ("NICK_LOG","ROL_LOG","SQL_LOG","TABLA_LOG","FECHA_LOG","ID_LOG") VALUES (NICK_LOG,ROL_LOG,SQL_LOG,'Usuario',CURRENT_TIMESTAMP,ID_LOG);
   END IF;
   IF DELETING  THEN
-     sql_log:=CONCAT('Eliminado ',:antiguo."Correo_us");
-     INSERT INTO LOG ("Nick_log","Rol_log","sql_log","tabla_log","fecha_log","id_log") VALUES (nick_log,rol_log,sql_log,'Usuario',CURRENT_TIMESTAMP,id_log);
+     SQL_LOG:=CONCAT('Eliminado ',:antiguo."CORREO_US");
+     INSERT INTO LOG ("NICK_LOG","ROL_LOG","SQL_LOG","TABLA_LOG","FECHA_LOG","ID_LOG") VALUES (NICK_LOG,ROL_LOG,SQL_LOG,'Usuario',CURRENT_TIMESTAMP,ID_LOG);
   END IF;
   IF UPDATING  THEN
-     IF antiguo."Correo_us"!=nuevo."Correo_us" THEN
-        sql_log:=CONCAT(CONCAT(CONCAT('Actualizado ',:antiguo."Correo_us"),' a '),:nuevo."Correo_us");
-        INSERT INTO LOG ("Nick_log","Rol_log","sql_log","tabla_log","fecha_log","id_log") VALUES (nick_log,rol_log,sql_log,'Usuario',CURRENT_TIMESTAMP,id_log);
+     IF antiguo."CORREO_US"!=nuevo."CORREO_US" THEN
+        SQL_LOG:=CONCAT(CONCAT(CONCAT('Actualizado ',:antiguo."CORREO_US"),' a '),:nuevo."CORREO_US");
+        INSERT INTO LOG ("NICK_LOG","ROL_LOG","SQL_LOG","TABLA_LOG","FECHA_LOG","ID_LOG") VALUES (NICK_LOG,ROL_LOG,SQL_LOG,'Usuario',CURRENT_TIMESTAMP,ID_LOG);
      END IF;
-     IF antiguo."Nombre_us"!=nuevo."Nombre_us" THEN
-        sql_log:=CONCAT(CONCAT(CONCAT('Actualizado ',:antiguo."Nombre_us"),' a '),:nuevo."Nombre_us");
-        INSERT INTO LOG ("Nick_log","Rol_log","sql_log","tabla_log","fecha_log","id_log") VALUES (nick_log,rol_log,sql_log,'Usuario',CURRENT_TIMESTAMP,id_log);
+     IF antiguo."NOMBRE_US"!=nuevo."NOMBRE_US" THEN
+        SQL_LOG:=CONCAT(CONCAT(CONCAT('Actualizado ',:antiguo."NOMBRE_US"),' a '),:nuevo."NOMBRE_US");
+        INSERT INTO LOG ("NICK_LOG","ROL_LOG","SQL_LOG","TABLA_LOG","FECHA_LOG","ID_LOG") VALUES (NICK_LOG,ROL_LOG,SQL_LOG,'Usuario',CURRENT_TIMESTAMP,ID_LOG);
      END IF;
-     IF antiguo."Contrasena_us"!=nuevo."Contrasena_us" THEN
-        sql_log:=CONCAT(CONCAT(CONCAT('Actualizado ',:antiguo."Contrasena_us"),' a '),:nuevo."Contrasena_us");
-        INSERT INTO LOG ("Nick_log","Rol_log","sql_log","tabla_log","fecha_log","id_log") VALUES (nick_log,rol_log,sql_log,'Usuario',CURRENT_TIMESTAMP,id_log);
+     IF antiguo."PASSWORD_US"!=nuevo."PASSWORD_US" THEN
+        SQL_LOG:=CONCAT(CONCAT(CONCAT('Actualizado ',:antiguo."PASSWORD_US"),' a '),:nuevo."PASSWORD_US");
+        INSERT INTO LOG ("NICK_LOG","ROL_LOG","SQL_LOG","TABLA_LOG","FECHA_LOG","ID_LOG") VALUES (NICK_LOG,ROL_LOG,SQL_LOG,'Usuario',CURRENT_TIMESTAMP,ID_LOG);
      END IF;
   END IF;
 END;
 
 /* trigger de peticiones*/
 CREATE OR REPLACE TRIGGER peticion_log
-AFTER INSERT OR UPDATE OR DELETE ON "Peticion"
+AFTER INSERT OR UPDATE OR DELETE ON "PETICION"
    REFERENCING OLD AS antiguo NEW AS nuevo
    FOR EACH ROW
    DECLARE
-      id_log NUMBER;
-      nick_log VARCHAR2(30);
-      rol_log VARCHAR2(30);
-      sql_log VARCHAR2(250);
+      ID_LOG NUMBER;
+      NICK_LOG VARCHAR2(30);
+      ROL_LOG VARCHAR2(30);
+      SQL_LOG VARCHAR2(250);
 BEGIN
-     SELECT COUNT(*)+1 INTO id_log FROM LOG;
-     SELECT sys_context('USERENV','HOST') INTO nick_log FROM dual;
-     SELECT user INTO rol_log FROM dual;
+     SELECT COUNT(*)+1 INTO ID_LOG FROM LOG;
+     SELECT sys_context('USERENV','HOST') INTO NICK_LOG FROM dual;
+     SELECT user INTO ROL_LOG FROM dual;
   IF INSERTING THEN
-     sql_log:=CONCAT('Insert ',:nuevo."Codigo_pe");
-     INSERT INTO LOG ("Nick_log","Rol_log","sql_log","tabla_log","fecha_log","id_log") VALUES (nick_log,rol_log,sql_log,'Peticion',CURRENT_TIMESTAMP,id_log);
+     SQL_LOG:=CONCAT('Insert ',:nuevo."CODIGO_PE");
+     INSERT INTO LOG ("NICK_LOG","ROL_LOG","SQL_LOG","TABLA_LOG","FECHA_LOG","ID_LOG") VALUES (NICK_LOG,ROL_LOG,SQL_LOG,'Peticion',CURRENT_TIMESTAMP,ID_LOG);
   END IF;
   IF DELETING  THEN
-     sql_log:=CONCAT('Eliminado ',:antiguo."Codigo_pe");
-     INSERT INTO LOG ("Nick_log","Rol_log","sql_log","tabla_log","fecha_log","id_log") VALUES (nick_log,rol_log,sql_log,'Peticion',CURRENT_TIMESTAMP,id_log);
+     SQL_LOG:=CONCAT('Eliminado ',:antiguo."CODIGO_PE");
+     INSERT INTO LOG ("NICK_LOG","ROL_LOG","SQL_LOG","TABLA_LOG","FECHA_LOG","ID_LOG") VALUES (NICK_LOG,ROL_LOG,SQL_LOG,'Peticion',CURRENT_TIMESTAMP,ID_LOG);
   END IF;
   IF UPDATING  THEN
-     IF antiguo."Origen_pe"!=nuevo."Origen_pe" THEN
-        sql_log:=CONCAT(CONCAT(CONCAT('Actualizado ',:antiguo."Origen_pe"),' a '),:nuevo."Origen_pe");
-        INSERT INTO LOG ("Nick_log","Rol_log","sql_log","tabla_log","fecha_log","id_log") VALUES (nick_log,rol_log,sql_log,'Peticion',CURRENT_TIMESTAMP,id_log);
+     IF antiguo."ABREVIACION_ID"!=nuevo."ABREVIACION_ID" THEN
+        SQL_LOG:=CONCAT(CONCAT(CONCAT('Actualizado ',:antiguo."ABREVIACION_ID"),' a '),:nuevo."ABREVIACION_ID");
+        INSERT INTO LOG ("NICK_LOG","ROL_LOG","SQL_LOG","TABLA_LOG","FECHA_LOG","ID_LOG") VALUES (NICK_LOG,ROL_LOG,SQL_LOG,'Peticion',CURRENT_TIMESTAMP,ID_LOG);
      END IF;
-     IF antiguo."Destino_pe"!=nuevo."Destino_pe" THEN
-        sql_log:=CONCAT(CONCAT(CONCAT('Actualizado ',:antiguo."Destino_pe"),' a '),:nuevo."Destino_pe");
-        INSERT INTO LOG ("Nick_log","Rol_log","sql_log","tabla_log","fecha_log","id_log") VALUES (nick_log,rol_log,sql_log,'Peticion',CURRENT_TIMESTAMP,id_log);
+     IF antiguo."IDI_ABREVIACION_ID"!=nuevo."IDI_ABREVIACION_ID" THEN
+        SQL_LOG:=CONCAT(CONCAT(CONCAT('Actualizado ',:antiguo."IDI_ABREVIACION_ID"),' a '),:nuevo."IDI_ABREVIACION_ID");
+        INSERT INTO LOG ("NICK_LOG","ROL_LOG","SQL_LOG","TABLA_LOG","FECHA_LOG","ID_LOG") VALUES (NICK_LOG,ROL_LOG,SQL_LOG,'Peticion',CURRENT_TIMESTAMP,ID_LOG);
      END IF;
-     IF antiguo."Descripcion_pe"!=nuevo."Descripcion_pe" THEN
-        sql_log:=CONCAT(CONCAT(CONCAT('Actualizado ',:antiguo."Descripcion_pe"),' a '),:nuevo."Descripcion_pe");
-        INSERT INTO LOG ("Nick_log","Rol_log","sql_log","tabla_log","fecha_log","id_log") VALUES (nick_log,rol_log,sql_log,'Peticion',CURRENT_TIMESTAMP,id_log);
+     IF antiguo."DESCRIPCION_PE"!=nuevo."DESCRIPCION_PE" THEN
+        SQL_LOG:=CONCAT(CONCAT(CONCAT('Actualizado ',:antiguo."DESCRIPCION_PE"),' a '),:nuevo."Descripcion_pe");
+        INSERT INTO LOG ("NICK_LOG","ROL_LOG","SQL_LOG","TABLA_LOG","FECHA_LOG","ID_LOG") VALUES (NICK_LOG,ROL_LOG,SQL_LOG,'Peticion',CURRENT_TIMESTAMP,ID_LOG);
+     END IF;
+    IF antiguo."TIPO_PE"!=nuevo."TIPO_PE" THEN
+        SQL_LOG:=CONCAT(CONCAT(CONCAT('Actualizado ',:antiguo."TIPO_PE"),' a '),:nuevo."TIPO_PE");
+        INSERT INTO LOG ("NICK_LOG","ROL_LOG","SQL_LOG","TABLA_LOG","FECHA_LOG","ID_LOG") VALUES (NICK_LOG,ROL_LOG,SQL_LOG,'Peticion',CURRENT_TIMESTAMP,ID_LOG);
+     END IF;
+    IF antiguo."ESTADO_PE"!=nuevo."ESTADO_PE" THEN
+        SQL_LOG:=CONCAT(CONCAT(CONCAT('Actualizado ',:antiguo."ESTADO_PE"),' a '),:nuevo."ESTADO_PE");
+        INSERT INTO LOG ("NICK_LOG","ROL_LOG","SQL_LOG","TABLA_LOG","FECHA_LOG","ID_LOG") VALUES (NICK_LOG,ROL_LOG,SQL_LOG,'Peticion',CURRENT_TIMESTAMP,ID_LOG);
      END IF;
   END IF;
 END;
 
 /* trigger de revisores*/
 CREATE OR REPLACE TRIGGER revisor_log
-AFTER INSERT OR UPDATE OR DELETE ON "Revisor"
+AFTER INSERT OR UPDATE OR DELETE ON "REVISOR"
    REFERENCING OLD AS antiguo NEW AS nuevo
    FOR EACH ROW
    DECLARE
-      id_log NUMBER;
-      nick_log VARCHAR2(30);
-      rol_log VARCHAR2(30);
-      sql_log VARCHAR2(250);
+      ID_LOG NUMBER;
+      NICK_LOG VARCHAR2(30);
+      ROL_LOG VARCHAR2(30);
+      SQL_LOG VARCHAR2(250);
 BEGIN
-     SELECT COUNT(*)+1 INTO id_log FROM LOG;
-     SELECT sys_context('USERENV','HOST') INTO nick_log FROM dual;
-     SELECT user INTO rol_log FROM dual;
+     SELECT COUNT(*)+1 INTO ID_LOG FROM LOG;
+     SELECT sys_context('USERENV','HOST') INTO NICK_LOG FROM dual;
+     SELECT user INTO ROL_LOG FROM dual;
   IF INSERTING THEN
-     sql_log:=CONCAT('Insert ',:nuevo."CorreoElectronico_re");
-     INSERT INTO LOG ("Nick_log","Rol_log","sql_log","tabla_log","fecha_log","id_log") VALUES (nick_log,rol_log,sql_log,'Revisor',CURRENT_TIMESTAMP,id_log);
+     SQL_LOG:=CONCAT('Insert ',:nuevo."CORREO_RE");
+     INSERT INTO LOG ("NICK_LOG","ROL_LOG","SQL_LOG","TABLA_LOG","FECHA_LOG","ID_LOG") VALUES (NICK_LOG,ROL_LOG,SQL_LOG,'Revisor',CURRENT_TIMESTAMP,ID_LOG);
   END IF;
   IF DELETING  THEN
-     sql_log:=CONCAT('Eliminado ',:antiguo."CorreoElectronico_re");
-     INSERT INTO LOG ("Nick_log","Rol_log","sql_log","tabla_log","fecha_log","id_log") VALUES (nick_log,rol_log,sql_log,'Revisor',CURRENT_TIMESTAMP,id_log);
+     SQL_LOG:=CONCAT('Eliminado ',:antiguo."CORREO_RE");
+     INSERT INTO LOG ("NICK_LOG","ROL_LOG","SQL_LOG","TABLA_LOG","FECHA_LOG","ID_LOG") VALUES (NICK_LOG,ROL_LOG,SQL_LOG,'Revisor',CURRENT_TIMESTAMP,ID_LOG);
   END IF;
   IF UPDATING  THEN
-     IF antiguo."CorreoElectronico_re"!=nuevo."CorreoElectronico_re" THEN
-        sql_log:=CONCAT(CONCAT(CONCAT('Actualizado ',:antiguo."CorreoElectronico_re"),' a '),:nuevo."CorreoElectronico_re");
-        INSERT INTO LOG ("Nick_log","Rol_log","sql_log","tabla_log","fecha_log","id_log") VALUES (nick_log,rol_log,sql_log,'Revisor',CURRENT_TIMESTAMP,id_log);
+     IF antiguo."CORREO_RE"!=nuevo."CORREO_RE" THEN
+        SQL_LOG:=CONCAT(CONCAT(CONCAT('Actualizado ',:antiguo."CORREO_RE"),' a '),:nuevo."CORREO_RE");
+        INSERT INTO LOG ("NICK_LOG","ROL_LOG","SQL_LOG","TABLA_LOG","FECHA_LOG","ID_LOG") VALUES (NICK_LOG,ROL_LOG,SQL_LOG,'Revisor',CURRENT_TIMESTAMP,ID_LOG);
      END IF;
-     IF antiguo."Nombre_re"!=nuevo."Nombre_re" THEN
-        sql_log:=CONCAT(CONCAT(CONCAT('Actualizado ',:antiguo."Nombre_re"),' a '),:nuevo."Nombre_re");
-        INSERT INTO LOG ("Nick_log","Rol_log","sql_log","tabla_log","fecha_log","id_log") VALUES (nick_log,rol_log,sql_log,'Revisor',CURRENT_TIMESTAMP,id_log);
+     IF antiguo."NOMBRE_RE"!=nuevo."NOMBRE_RE" THEN
+        SQL_LOG:=CONCAT(CONCAT(CONCAT('Actualizado ',:antiguo."NOMBRE_RE"),' a '),:nuevo."NOMBRE_RE");
+        INSERT INTO LOG ("NICK_LOG","ROL_LOG","SQL_LOG","TABLA_LOG","FECHA_LOG","ID_LOG") VALUES (NICK_LOG,ROL_LOG,SQL_LOG,'Revisor',CURRENT_TIMESTAMP,ID_LOG);
      END IF;
   END IF;
 END;
