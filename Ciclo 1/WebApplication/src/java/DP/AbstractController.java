@@ -243,9 +243,11 @@ public abstract class AbstractController<T> implements Serializable {
             this.setEmbeddableKeys();
             try {
                 if (persistAction != PersistAction.DELETE) {
-                    this.ejbFacade.edit(selected);
-                } else {
                     this.ejbFacade.remove(selected);
+                }else if (persistAction == PersistAction.UPDATE){
+                    this.ejbFacade.edit(selected);
+                }else if (persistAction == PersistAction.CREATE){
+                    this.ejbFacade.create(selected);
                 }
                 JsfUtil.addSuccessMessage(successMessage);
             } catch (EJBException ex) {
