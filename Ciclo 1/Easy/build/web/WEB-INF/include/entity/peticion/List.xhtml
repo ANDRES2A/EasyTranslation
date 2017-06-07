@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui">
+
+    <h:form id="PeticionListForm">
+
+        <p:panel header="#{myBundle.ListPeticionTitle}">
+            <p:contextMenu id="PeticionDataTableContextMenu" for="datalist">  
+                <p:menuitem value="#{myBundle.Create}" onclick="document.getElementById('PeticionListForm:createButton').click();" icon="ui-icon-plus"/>
+                <p:menuitem value="#{myBundle.View}" onclick="document.getElementById('PeticionListForm:viewButton').click();" icon="ui-icon-search"/>
+                <p:menuitem value="#{myBundle.Edit}" onclick="document.getElementById('PeticionListForm:editButton').click();" icon="ui-icon-pencil"/>
+                <p:menuitem value="#{myBundle.Delete}" onclick="document.getElementById('PeticionListForm:deleteButton').click();" icon="ui-icon-trash"/>
+                <p:separator/>
+                <p:menuitem value="#{myBundle.PeticionMenuItem_abreviacionId}" icon="ui-icon-search"  actionListener="#{peticionController.prepareAbreviacionId}" update=":IdiomaViewForm" oncomplete="PF('IdiomaViewDialog').show()" disabled="#{empty peticionController.selected.abreviacionId}"/>  
+                <p:menuitem value="#{myBundle.PeticionMenuItem_idiAbreviacionId}" icon="ui-icon-search"  actionListener="#{peticionController.prepareIdiAbreviacionId}" update=":IdiomaViewForm" oncomplete="PF('IdiomaViewDialog').show()" disabled="#{empty peticionController.selected.idiAbreviacionId}"/>  
+                <p:menuitem value="#{myBundle.PeticionMenuItem_correoUs}" icon="ui-icon-search"  actionListener="#{peticionController.prepareCorreoUs}" update=":UsuarioViewForm" oncomplete="PF('UsuarioViewDialog').show()" disabled="#{empty peticionController.selected.correoUs}"/>  
+            </p:contextMenu>
+            <p:dataTable id="datalist"
+                         value="#{peticionController.items}"
+                         lazy="false"
+                         rowKey="#{item.codigoPe}"
+                         var="item"
+                         paginator="true"
+                         rows="10"
+                         rowsPerPageTemplate="10,20,30,40,50"
+                         selectionMode="single"
+                         selection="#{peticionController.selected}"
+                         filteredValue="#{peticionController.filteredItems}">
+                <!--
+                         To enable Lazy Loading, please copy/replace the following lines above,
+                         and be sure to replace the word HASH with the # symbol:
+                
+                         value="HASH{peticionController.lazyItems}"
+                         lazy="true"
+                         rowKey="HASH{item.codigoPe}"  <<< Remove this line
+                -->
+
+
+                <p:ajax event="rowSelect"   update="@form:createButton,@form:viewButton,@form:editButton,@form:deleteButton,@form:PeticionDataTableContextMenu" listener="#{peticionController.resetParents}"/>
+                <p:ajax event="rowUnselect" update="@form:createButton,@form:viewButton,@form:editButton,@form:deleteButton,@form:PeticionDataTableContextMenu" listener="#{peticionController.resetParents}"/>
+                <p:ajax event="contextMenu" update="@form:createButton @form:viewButton @form:editButton @form:deleteButton" listener="#{peticionController.resetParents}"/>
+                <p:ajax event="rowDblselect" onsuccess="document.getElementById('PeticionListForm:viewButton').click();"/>
+
+                <p:column sortBy="#{item.codigoPe}" filterBy="#{item.codigoPe}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListPeticionTitle_codigoPe}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.codigoPe}"/>
+                </p:column>
+
+
+                <p:column sortBy="#{item.descripcionPe}" filterBy="#{item.descripcionPe}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListPeticionTitle_descripcionPe}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.descripcionPe}"/>
+                </p:column>
+
+
+                <p:column sortBy="#{item.tipoPe}" filterBy="#{item.tipoPe}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListPeticionTitle_tipoPe}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.tipoPe}"/>
+                </p:column>
+
+
+                <p:column sortBy="#{item.fechaEmisionPe}" filterBy="#{item.fechaEmisionPe}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListPeticionTitle_fechaEmisionPe}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.fechaEmisionPe}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                </p:column>
+
+
+                <p:column sortBy="#{item.estadoPe}" filterBy="#{item.estadoPe}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListPeticionTitle_estadoPe}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.estadoPe}"/>
+                </p:column>
+
+
+                <p:column sortBy="#{item.abreviacionId.descripcionId}" filterBy="#{item.abreviacionId.descripcionId}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListPeticionTitle_abreviacionId}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.abreviacionId.descripcionId}"/>
+                </p:column>
+
+                <ui:remove>
+                    <p:column sortBy="#{item.idiAbreviacionId.descripcionId}" filterBy="#{item.idiAbreviacionId.descripcionId}">
+                        <f:facet name="header">
+                            <h:outputText value="#{myBundle.ListPeticionTitle_idiAbreviacionId}"/>
+                        </f:facet>
+                        <h:outputText value="#{item.idiAbreviacionId.descripcionId}"/>
+                    </p:column>
+                </ui:remove>
+                <ui:remove>
+                    <p:column sortBy="#{item.correoUs.correoUs}" filterBy="#{item.correoUs.correoUs}">
+                        <f:facet name="header">
+                            <h:outputText value="#{myBundle.ListPeticionTitle_correoUs}"/>
+                        </f:facet>
+                        <h:outputText value="#{item.correoUs.correoUs}"/>
+                    </p:column>
+                </ui:remove>
+
+            </p:dataTable>
+
+            <p:commandButton id="createButton"                             icon="ui-icon-plus"   value="#{myBundle.Create}" actionListener="#{peticionController.prepareCreate}" update=":PeticionCreateForm" oncomplete="PF('PeticionCreateDialog').show()"/>
+            <p:commandButton id="viewButton"   style="visibility: hidden;" icon="ui-icon-search" value="#{myBundle.View}" update=":PeticionViewForm" oncomplete="PF('PeticionViewDialog').show()" disabled="#{empty peticionController.selected}"/>
+            <p:commandButton id="editButton"   style="visibility: hidden;" icon="ui-icon-pencil" value="#{myBundle.Edit}" update=":PeticionEditForm" oncomplete="PF('PeticionEditDialog').show()" disabled="#{empty peticionController.selected}"/>
+            <p:commandButton id="deleteButton" style="visibility: hidden;" icon="ui-icon-trash"  value="#{myBundle.Delete}" actionListener="#{peticionController.delete}" update=":growl,datalist" disabled="#{empty peticionController.selected}">
+                <p:confirm header="#{myBundle.ConfirmationHeader}" message="#{myBundle.ConfirmDeleteMessage}" icon="ui-icon-alert"/>
+            </p:commandButton>
+
+        </p:panel>
+        <ui:include src="/WEB-INF/include/confirmation.xhtml"/>
+    </h:form>
+
+</ui:composition>

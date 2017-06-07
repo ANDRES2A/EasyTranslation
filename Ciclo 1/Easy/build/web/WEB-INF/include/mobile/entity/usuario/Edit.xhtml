@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:pm="http://primefaces.org/mobile">
+
+    <pm:page id="UsuarioEditPage" lazy="true">
+        <pm:header title="#{myBundle.EditUsuarioTitle}">
+            <h:form>
+                <p:commandButton styleClass="ui-btn-left ui-btn-inline" value="#{myBundle.Cancel}" icon="ui-icon-arrow-l" action="#{mobilePageController.navigateBackInHistory('pm:UsuarioListPage')}"/>
+            </h:form>
+        </pm:header>
+
+        <pm:content>
+
+            <h:form id="UsuarioEditForm">
+
+                <h:panelGroup id="display">
+                    <p:outputPanel rendered="#{usuarioController.selected != null}">
+
+                        <pm:field>
+                            <h:outputLabel value="#{myBundle.EditUsuarioLabel_correoUs}" for="correoUs" />
+                            <h:outputText id="correoUs" value="#{usuarioController.selected.correoUs}" />
+                        </pm:field>
+
+                        <pm:field>
+                            <p:outputLabel value="#{myBundle.EditUsuarioLabel_nombreUs}" for="nombreUs" />
+                            <p:inputText id="nombreUs" value="#{usuarioController.selected.nombreUs}" title="#{myBundle.EditUsuarioTitle_nombreUs}" size="100" maxlength="100"/>
+                        </pm:field>
+
+                        <pm:field>
+                            <p:outputLabel value="#{myBundle.EditUsuarioLabel_passwordUs}" for="passwordUs" />
+                            <p:inputText id="passwordUs" value="#{usuarioController.selected.passwordUs}" title="#{myBundle.EditUsuarioTitle_passwordUs}" size="255" maxlength="255"/>
+                        </pm:field>
+
+                        <pm:field>
+                            <p:outputLabel value="#{myBundle.EditUsuarioLabel_fechaNacimientoUs}" for="fechaNacimientoUs" />
+                            <p:calendar id="fechaNacimientoUs" pattern="MM/dd/yyyy HH:mm:ss" value="#{usuarioController.selected.fechaNacimientoUs}" title="#{myBundle.EditUsuarioTitle_fechaNacimientoUs}"  showOn="button"/>
+                        </pm:field>
+
+                        <pm:field>
+                            <p:outputLabel value="#{myBundle.EditUsuarioLabel_idiomaCollection}" for="idiomaCollection" />
+                            <p:selectManyMenu id="idiomaCollection" value="#{usuarioController.selected.idiomaCollection}"  converter="idiomaConverter">
+                                <f:selectItems value="#{idiomaController.items}"
+                                               var="idiomaCollectionItem"
+                                               itemValue="#{idiomaCollectionItem}"
+                                               itemLabel="#{idiomaCollectionItem.descripcionId.toString()}"
+                                               />
+
+                            </p:selectManyMenu>
+                        </pm:field>
+                    </p:outputPanel>
+                    <p:commandButton actionListener="#{usuarioController.save}" value="#{myBundle.Save}" update="#{mobilePageController.updatableWidgets(component,'display,:UsuarioListPage:UsuarioListForm:datalist,:growl')}" action="#{mobilePageController.navigateWithHistory('pm:UsuarioListPage')}"/>
+
+                </h:panelGroup>
+
+            </h:form>
+
+        </pm:content>
+
+    </pm:page>
+
+</ui:composition>

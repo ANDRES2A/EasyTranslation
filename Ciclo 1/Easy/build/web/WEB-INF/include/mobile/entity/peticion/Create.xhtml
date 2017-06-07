@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:pm="http://primefaces.org/mobile">
+
+    <pm:page id="PeticionCreatePage" lazy="true">
+        <pm:header title="#{myBundle.CreatePeticionTitle}">
+            <h:form>
+                <p:commandButton styleClass="ui-btn-left ui-btn-inline" value="#{myBundle.Cancel}" icon="ui-icon-arrow-l" action="#{mobilePageController.navigateBackInHistory('pm:PeticionListPage')}"/>
+            </h:form>
+        </pm:header>
+
+        <pm:content>
+
+            <h:form id="PeticionCreateForm">
+
+                <h:panelGroup id="display" rendered="#{peticionController.selected != null}">
+                    <p:outputPanel>
+
+                        <pm:field>
+                            <p:outputLabel value="#{myBundle.CreatePeticionLabel_codigoPe}" for="codigoPe" />
+                            <p:inputText id="codigoPe" value="#{peticionController.selected.codigoPe}" title="#{myBundle.CreatePeticionTitle_codigoPe}" required="true" requiredMessage="#{myBundle.CreatePeticionRequiredMessage_codigoPe}"/>
+                        </pm:field>
+
+                        <pm:field>
+                            <p:outputLabel value="#{myBundle.CreatePeticionLabel_descripcionPe}" for="descripcionPe" />
+                            <p:inputTextarea rows="4" cols="30" id="descripcionPe" value="#{peticionController.selected.descripcionPe}" title="#{myBundle.CreatePeticionTitle_descripcionPe}" />
+                        </pm:field>
+
+                        <pm:field>
+                            <p:outputLabel value="#{myBundle.CreatePeticionLabel_tipoPe}" for="tipoPe" />
+                            <p:inputText id="tipoPe" value="#{peticionController.selected.tipoPe}" title="#{myBundle.CreatePeticionTitle_tipoPe}" size="10" maxlength="10"/>
+                        </pm:field>
+
+                        <pm:field>
+                            <p:outputLabel value="#{myBundle.CreatePeticionLabel_fechaEmisionPe}" for="fechaEmisionPe" />
+                            <p:calendar id="fechaEmisionPe" pattern="MM/dd/yyyy HH:mm:ss" value="#{peticionController.selected.fechaEmisionPe}" title="#{myBundle.CreatePeticionTitle_fechaEmisionPe}"  showOn="button"/>
+                        </pm:field>
+
+                        <pm:field>
+                            <p:outputLabel value="#{myBundle.CreatePeticionLabel_estadoPe}" for="estadoPe" />
+                            <p:inputText id="estadoPe" value="#{peticionController.selected.estadoPe}" title="#{myBundle.CreatePeticionTitle_estadoPe}" size="15" maxlength="15"/>
+                        </pm:field>
+
+                        <pm:field>
+                            <p:outputLabel value="#{myBundle.CreatePeticionLabel_abreviacionId}" for="abreviacionId" />
+                            <p:selectOneMenu id="abreviacionId" value="#{peticionController.selected.abreviacionId}"  converter="idiomaConverter">
+                                <f:selectItem itemLabel="#{myBundle.SelectOneMessage}"/>
+                                <f:selectItems value="#{idiomaController.items}"
+                                               var="abreviacionIdItem"
+                                               itemValue="#{abreviacionIdItem}"
+                                               itemLabel="#{abreviacionIdItem.descripcionId.toString()}"
+                                               />
+
+                            </p:selectOneMenu>
+                        </pm:field>
+
+                        <pm:field>
+                            <p:outputLabel value="#{myBundle.CreatePeticionLabel_idiAbreviacionId}" for="idiAbreviacionId" />
+                            <p:selectOneMenu id="idiAbreviacionId" value="#{peticionController.selected.idiAbreviacionId}"  converter="idiomaConverter">
+                                <f:selectItem itemLabel="#{myBundle.SelectOneMessage}"/>
+                                <f:selectItems value="#{idiomaController.items}"
+                                               var="idiAbreviacionIdItem"
+                                               itemValue="#{idiAbreviacionIdItem}"
+                                               itemLabel="#{idiAbreviacionIdItem.descripcionId.toString()}"
+                                               />
+
+                            </p:selectOneMenu>
+                        </pm:field>
+
+                        <pm:field>
+                            <p:outputLabel value="#{myBundle.CreatePeticionLabel_correoUs}" for="correoUs" />
+                            <p:selectOneMenu id="correoUs" value="#{peticionController.selected.correoUs}"  converter="usuarioConverter">
+                                <f:selectItem itemLabel="#{myBundle.SelectOneMessage}"/>
+                                <f:selectItems value="#{usuarioController.items}"
+                                               var="correoUsItem"
+                                               itemValue="#{correoUsItem}"
+                                               itemLabel="#{correoUsItem.correoUs.toString()}"
+                                               />
+
+                            </p:selectOneMenu>
+                        </pm:field>
+                    </p:outputPanel>
+                    <p:commandButton actionListener="#{peticionController.saveNew}" value="#{myBundle.Save}" update="display,:PeticionListPage:PeticionListForm:datalist,:growl" action="#{mobilePageController.navigateWithHistory('pm:PeticionListPage')}"/>
+
+                </h:panelGroup>
+
+            </h:form>
+
+        </pm:content>
+
+    </pm:page>
+
+</ui:composition>

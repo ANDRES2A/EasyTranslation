@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:pm="http://primefaces.org/mobile">
+
+    <pm:page id="IdiomaEditPage" lazy="true">
+        <pm:header title="#{myBundle.EditIdiomaTitle}">
+            <h:form>
+                <p:commandButton styleClass="ui-btn-left ui-btn-inline" value="#{myBundle.Cancel}" icon="ui-icon-arrow-l" action="#{mobilePageController.navigateBackInHistory('pm:IdiomaListPage')}"/>
+            </h:form>
+        </pm:header>
+
+        <pm:content>
+
+            <h:form id="IdiomaEditForm">
+
+                <h:panelGroup id="display">
+                    <p:outputPanel rendered="#{idiomaController.selected != null}">
+
+                        <pm:field>
+                            <h:outputLabel value="#{myBundle.EditIdiomaLabel_abreviacionId}" for="abreviacionId" />
+                            <h:outputText id="abreviacionId" value="#{idiomaController.selected.abreviacionId}" />
+                        </pm:field>
+
+                        <pm:field>
+                            <p:outputLabel value="#{myBundle.EditIdiomaLabel_descripcionId}" for="descripcionId" />
+                            <p:inputText id="descripcionId" value="#{idiomaController.selected.descripcionId}" title="#{myBundle.EditIdiomaTitle_descripcionId}" size="100" maxlength="100"/>
+                        </pm:field>
+
+                        <pm:field>
+                            <p:outputLabel value="#{myBundle.EditIdiomaLabel_revisorCollection}" for="revisorCollection" />
+                            <p:selectManyMenu id="revisorCollection" value="#{idiomaController.selected.revisorCollection}"  converter="revisorConverter">
+                                <f:selectItems value="#{revisorController.items}"
+                                               var="revisorCollectionItem"
+                                               itemValue="#{revisorCollectionItem}"
+                                               itemLabel="#{revisorCollectionItem.correoRe.toString()}"
+                                               />
+
+                            </p:selectManyMenu>
+                        </pm:field>
+                    </p:outputPanel>
+                    <p:commandButton actionListener="#{idiomaController.save}" value="#{myBundle.Save}" update="#{mobilePageController.updatableWidgets(component,'display,:IdiomaListPage:IdiomaListForm:datalist,:growl')}" action="#{mobilePageController.navigateWithHistory('pm:IdiomaListPage')}"/>
+
+                </h:panelGroup>
+
+            </h:form>
+
+        </pm:content>
+
+    </pm:page>
+
+</ui:composition>

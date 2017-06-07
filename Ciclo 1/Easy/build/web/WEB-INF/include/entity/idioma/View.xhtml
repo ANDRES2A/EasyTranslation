@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="IdiomaViewDlg" widgetVar="IdiomaViewDialog" modal="true" resizable="false"  appendTo="@(body)" header="#{myBundle.ViewIdiomaTitle}" closeOnEscape="true">
+
+            <h:form id="IdiomaViewForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" columnClasses="column" rendered="#{idiomaController.selected != null}">
+
+                        <h:outputText value="#{myBundle.ViewIdiomaLabel_abreviacionId}"/>
+                        <h:outputText value="#{idiomaController.selected.abreviacionId}" title="#{myBundle.ViewIdiomaTitle_abreviacionId}"/>
+
+                        <h:outputText value="#{myBundle.ViewIdiomaLabel_descripcionId}"/>
+                        <h:outputText value="#{idiomaController.selected.descripcionId}" title="#{myBundle.ViewIdiomaTitle_descripcionId}"/>
+
+                        <h:outputText value="#{myBundle.ViewIdiomaLabel_revisorCollection}"/>
+                        <h:selectManyMenu converter="revisorConverter">
+                            <f:selectItems value="#{idiomaController.selected.revisorCollection}"
+                                           var="revisorCollectionItem"
+                                           itemValue="#{revisorCollectionItem}"
+                                           itemLabel="#{revisorCollectionItem.correoRe.toString()}"
+                                           />
+
+                        </h:selectManyMenu>
+                    </p:panelGrid>
+                    <p:commandButton value="#{myBundle.Close}" onclick="PF('IdiomaViewDialog').hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

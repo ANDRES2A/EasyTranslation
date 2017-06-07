@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+        <p:dialog id="RevisorEditDlg" widgetVar="RevisorEditDialog" modal="true" resizable="false"  appendTo="@(body)" header="#{myBundle.EditRevisorTitle}" closeOnEscape="true">
+
+            <h:form id="RevisorEditForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid  columns="2" columnClasses="column" rendered="#{revisorController.selected != null}">
+
+
+                        <h:outputLabel value="#{myBundle.EditRevisorLabel_correoRe}" for="correoRe" />
+                        <h:outputText id="correoRe" value="#{revisorController.selected.correoRe}" />
+
+                        <p:outputLabel value="#{myBundle.EditRevisorLabel_nombreRe}" for="nombreRe" />
+                        <p:inputText id="nombreRe" value="#{revisorController.selected.nombreRe}" title="#{myBundle.EditRevisorTitle_nombreRe}" size="100" maxlength="100"/>
+
+                        <p:outputLabel value="#{myBundle.EditRevisorLabel_passwordRe}" for="passwordRe" />
+                        <p:inputText id="passwordRe" value="#{revisorController.selected.passwordRe}" title="#{myBundle.EditRevisorTitle_passwordRe}" size="255" maxlength="255"/>
+
+                        <p:outputLabel value="#{myBundle.EditRevisorLabel_fechaNacimientoRe}" for="fechaNacimientoRe" />
+                        <p:calendar id="fechaNacimientoRe" pattern="MM/dd/yyyy HH:mm:ss" value="#{revisorController.selected.fechaNacimientoRe}" title="#{myBundle.EditRevisorTitle_fechaNacimientoRe}"  showOn="button"/>
+
+                        <p:outputLabel value="#{myBundle.EditRevisorLabel_experiencia}" for="experiencia" />
+                        <p:inputText id="experiencia" value="#{revisorController.selected.experiencia}" title="#{myBundle.EditRevisorTitle_experiencia}" size="10" maxlength="10"/>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{revisorController.save}" value="#{myBundle.Save}" update="display,:RevisorListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,PF('RevisorEditDialog'));">
+                        <p:confirm header="#{myBundle.ConfirmationHeader}" message="#{myBundle.ConfirmEditMessage}" icon="ui-icon-alert"/>
+                    </p:commandButton>
+                    <p:commandButton value="#{myBundle.Cancel}" oncomplete="PF('RevisorEditDialog').hide()" update="display" process="@this" immediate="true" resetValues="true"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:pm="http://primefaces.org/mobile">
+
+    <pm:page id="RevisorEditPage" lazy="true">
+        <pm:header title="#{myBundle.EditRevisorTitle}">
+            <h:form>
+                <p:commandButton styleClass="ui-btn-left ui-btn-inline" value="#{myBundle.Cancel}" icon="ui-icon-arrow-l" action="#{mobilePageController.navigateBackInHistory('pm:RevisorListPage')}"/>
+            </h:form>
+        </pm:header>
+
+        <pm:content>
+
+            <h:form id="RevisorEditForm">
+
+                <h:panelGroup id="display">
+                    <p:outputPanel rendered="#{revisorController.selected != null}">
+
+                        <pm:field>
+                            <h:outputLabel value="#{myBundle.EditRevisorLabel_correoRe}" for="correoRe" />
+                            <h:outputText id="correoRe" value="#{revisorController.selected.correoRe}" />
+                        </pm:field>
+
+                        <pm:field>
+                            <p:outputLabel value="#{myBundle.EditRevisorLabel_nombreRe}" for="nombreRe" />
+                            <p:inputText id="nombreRe" value="#{revisorController.selected.nombreRe}" title="#{myBundle.EditRevisorTitle_nombreRe}" size="100" maxlength="100"/>
+                        </pm:field>
+
+                        <pm:field>
+                            <p:outputLabel value="#{myBundle.EditRevisorLabel_passwordRe}" for="passwordRe" />
+                            <p:inputText id="passwordRe" value="#{revisorController.selected.passwordRe}" title="#{myBundle.EditRevisorTitle_passwordRe}" size="255" maxlength="255"/>
+                        </pm:field>
+
+                        <pm:field>
+                            <p:outputLabel value="#{myBundle.EditRevisorLabel_fechaNacimientoRe}" for="fechaNacimientoRe" />
+                            <p:calendar id="fechaNacimientoRe" pattern="MM/dd/yyyy HH:mm:ss" value="#{revisorController.selected.fechaNacimientoRe}" title="#{myBundle.EditRevisorTitle_fechaNacimientoRe}"  showOn="button"/>
+                        </pm:field>
+
+                        <pm:field>
+                            <p:outputLabel value="#{myBundle.EditRevisorLabel_experiencia}" for="experiencia" />
+                            <p:inputText id="experiencia" value="#{revisorController.selected.experiencia}" title="#{myBundle.EditRevisorTitle_experiencia}" size="10" maxlength="10"/>
+                        </pm:field>
+                    </p:outputPanel>
+                    <p:commandButton actionListener="#{revisorController.save}" value="#{myBundle.Save}" update="#{mobilePageController.updatableWidgets(component,'display,:RevisorListPage:RevisorListForm:datalist,:growl')}" action="#{mobilePageController.navigateWithHistory('pm:RevisorListPage')}"/>
+
+                </h:panelGroup>
+
+            </h:form>
+
+        </pm:content>
+
+    </pm:page>
+
+</ui:composition>
